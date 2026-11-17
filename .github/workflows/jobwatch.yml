@@ -2,9 +2,10 @@ name: jobwatch
 
 on:
   schedule:
-    # Every 30 min, Mon–Fri, ~6am–8pm Pacific (times are UTC).
-    - cron: "*/30 13-23 * * 1-5"
-    - cron: "*/30 0-3 * * 2-6"
+    # Every 30 min, Mon–Fri, ~6am–8pm Pacific (times are UTC). Minutes 7/37 avoid the
+    # top-of-hour rush, when GitHub delays or drops scheduled runs.
+    - cron: "7,37 13-23 * * 1-5"
+    - cron: "7,37 0-3 * * 2-6"
   workflow_dispatch: {}   # "Run workflow" button for manual runs
 
 permissions:
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     outputs:
       site_changed: ${{ steps.save.outputs.site_changed }}
     steps:

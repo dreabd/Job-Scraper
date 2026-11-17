@@ -17,6 +17,7 @@ from __future__ import annotations
 import html
 import json
 import os
+import random
 import re
 import sys
 import time
@@ -132,16 +133,22 @@ def fetch_ashby(c) -> list[Job]:
     return out
 
 
+# Workday rate-limits GitHub's shared runner IPs, so cap the total time spent on it.
+# Whatever isn't checked this run gets checked next run (30 min later).
+WORKDAY_BUDGET_S = 180
+_workday_deadline: float | None = None
+
+
 def workday_search(api: str, term: str) -> list[dict]:
-    """POST a Workday search, backing off on 429 (Too Many Requests)."""
-    for attempt in range(4):
-        r = requests.post(api, timeout=TIMEOUT, json={"appliedFacets": {}, "limit": 20, "offset": 0,
-                                                      "searchText": term},
+    """POST a Workday search; on 429 (Too Many Requests) wait briefly and retry once."""
+    for attempt in range(2):
+        r = requests.post(api, timeout=15, json={"appliedFacets": {}, "limit": 20, "offset": 0,
+                                                 "searchText": term},
                           headers={**UA, "Content-Type": "application/json",
                                    "Accept": "application/json", "Accept-Language": "en-US"})
-        if r.status_code == 429 and attempt < 3:
+        if r.status_code == 429 and attempt == 0:
             wait = r.headers.get("Retry-After", "")
-            time.sleep(int(wait) if wait.isdigit() else 5 * 2 ** attempt)  # 5s, 10s, 20s
+            time.sleep(min(int(wait), 8) if wait.isdigit() else 5)
             continue
         r.raise_for_status()
         return r.json().get("jobPostings", [])
@@ -156,8 +163,14 @@ def fetch_workday(c) -> list[Job]:
     # match the target titles; each returns few enough results that new ones aren't missed.
     terms = ["site reliability", "devops", "support engineer", "production",
              "application support", "operations engineer"]
+    global _workday_deadline
+    if _workday_deadline is None:
+        _workday_deadline = time.monotonic() + WORKDAY_BUDGET_S
     failures = []
     for term in terms:
+        if time.monotonic() > _workday_deadline:
+            failures.append(RuntimeError("skipped: Workday time budget used up this run"))
+            continue
         time.sleep(1.5)  # Workday rate-limits bursts (HTTP 429)
         try:
             postings = workday_search(api, term)
@@ -469,6 +482,7 @@ def main() -> int:
     # Fast JSON boards in parallel; Workday one company at a time (it rate-limits bursts).
     fast = [c for c in cfg["companies"] if c["ats"] != "workday"]
     slow = [c for c in cfg["companies"] if c["ats"] == "workday"]
+    random.shuffle(slow)  # rotate order so a time-budget cutoff doesn't always skip the same ones
     with ThreadPoolExecutor(max_workers=12) as ex:
         results = list(ex.map(run, fast))
     results += [run(c) for c in slow]
