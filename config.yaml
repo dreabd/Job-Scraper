@@ -1,0 +1,201 @@
+# ---------------------------------------------------------------------------
+# jobwatch config — edit freely. Bad slugs just log a warning and are skipped.
+# Find a company's slug from its job board URL:
+#   greenhouse: job-boards.greenhouse.io/<slug>   (or boards.greenhouse.io/<slug>)
+#   lever:      jobs.lever.co/<slug>
+#   ashby:      jobs.ashbyhq.com/<slug>
+#   workday:    https://<tenant>.<wdN>.myworkdayjobs.com/<site>
+#   oracle:     .../hcmUI/CandidateExperience/en/sites/<site>/...  (host = the *.oraclecloud.com domain)
+#   talentbrew: a category/listing page on a Radancy career site (e.g. Kaiser)
+# ---------------------------------------------------------------------------
+
+# How far back to look on the first run (after that, "seen" ids prevent repeats).
+lookback_hours: 24
+
+# Title must match one of these (case-insensitive regex).
+title_include:
+  - site reliability
+  - \bsre\b
+  - production engineer
+  - production support
+  - production operations
+  - application support
+  - technical support engineer
+  - support engineer
+  - devops
+  - platform engineer
+  - cloud operations
+  - cloud engineer
+  - infrastructure engineer
+  - technical operations
+  - tech ops
+  - systems engineer
+  - \bkdb\b
+  - reliability engineer
+
+# Title must NOT match any of these.
+title_exclude:
+  - \bsenior\b
+  - \bsr\.?\b
+  - \bstaff\b
+  - \bprincipal\b
+  - \blead\b
+  - \bmanager\b
+  - \bdirector\b
+  - \barchitect\b
+  - \bintern\b
+  - \bhead of\b
+  - \bvp\b
+  - \biii\b
+  - \biv\b
+  - \bsales\b
+  - \bsolutions? engineer\b
+
+# On-site/hybrid OK only if location mentions one of these (~50mi of Aliso Viejo).
+local_places:
+  - aliso viejo
+  - irvine
+  - costa mesa
+  - newport beach
+  - lake forest
+  - mission viejo
+  - laguna
+  - san clemente
+  - san juan capistrano
+  - rancho santa margarita
+  - tustin
+  - santa ana
+  - orange, ca
+  - anaheim
+  - fullerton
+  - brea
+  - huntington beach
+  - fountain valley
+  - garden grove
+  - westminster
+  - cypress
+  - buena park
+  - seal beach
+  - long beach
+  - carlsbad
+  - oceanside
+  - ontario
+  - chino
+  - corona
+  - riverside
+  - orange county
+
+# Companies to skip entirely (case-insensitive substring of company name).
+# Empty = skip nothing. Example: - plaid
+skip_companies: []
+
+# Skip specific roles: [company substring, title substring]
+# Empty = skip nothing. Example: - [anduril, product operations technical specialist]
+skip_roles: []
+
+# ---------------------------------------------------------------------------
+# Watchlist. Draft — add/remove freely.
+# ---------------------------------------------------------------------------
+companies:
+  # --- Orange County / SoCal ---
+  - {name: Weedmaps, ats: greenhouse, slug: weedmaps77}
+  - {name: Anduril, ats: greenhouse, slug: andurilindustries}
+  - {name: Riot Games, ats: greenhouse, slug: riotgames}
+  - {name: SpaceX, ats: greenhouse, slug: spacex}
+  - {name: TP-Link, ats: workday, tenant: tplink, wd: wd503, site: External}
+  - {name: Edwards Lifesciences, ats: workday, tenant: edwards, wd: wd5, site: EdwardsCareers}
+  - {name: Pacific Life, ats: workday, tenant: pacificlife, wd: wd1, site: PacificLifeCareers}
+  - {name: Capital Group, ats: workday, tenant: capgroup, wd: wd1, site: capitalgroupcareers}
+
+  # --- Trading / fintech / crypto (closest to your background) ---
+  - {name: Hudson River Trading, ats: greenhouse, slug: wehrtyou}
+  - {name: Jump Trading, ats: greenhouse, slug: jumptrading}
+  - {name: DRW, ats: greenhouse, slug: drweng}
+  - {name: Optiver, ats: greenhouse, slug: optiverus}
+  - {name: IMC, ats: greenhouse, slug: imc}
+  - {name: Akuna Capital, ats: greenhouse, slug: akunacapital}
+  - {name: Virtu, ats: greenhouse, slug: virtu}
+  - {name: Tower Research, ats: greenhouse, slug: towerresearchcapital}
+  - {name: Five Rings, ats: greenhouse, slug: fiveringsllc}
+  - {name: Robinhood, ats: greenhouse, slug: robinhood}
+  - {name: Coinbase, ats: greenhouse, slug: coinbase}
+  - {name: Gemini, ats: greenhouse, slug: gemini}
+  - {name: Circle, ats: ashby, slug: circle}   # verify it's Circle (USDC)
+  - {name: Ripple, ats: greenhouse, slug: ripple}
+  - {name: Kraken, ats: ashby, slug: kraken.com}
+  - {name: Paxos, ats: ashby, slug: paxos}
+  - {name: Anchorage Digital, ats: lever, slug: anchorage}
+  - {name: Affirm, ats: greenhouse, slug: affirm}
+  - {name: Chime, ats: greenhouse, slug: chime}
+  - {name: Brex, ats: greenhouse, slug: brex}
+  - {name: Ramp, ats: ashby, slug: ramp}
+  - {name: Stripe, ats: greenhouse, slug: stripe}
+  - {name: Plaid, ats: ashby, slug: plaid}
+  - {name: tastytrade, ats: greenhouse, slug: tastytrade}
+
+  # --- Healthcare / health tech / medtech ---
+  # (verified 2026-11-17 unless marked otherwise)
+  - {name: Oscar Health, ats: greenhouse, slug: oscar}
+  - {name: Zocdoc, ats: greenhouse, slug: zocdoc}
+  - {name: Flatiron Health, ats: greenhouse, slug: flatironhealth}
+  - {name: Komodo Health, ats: greenhouse, slug: komodohealth}
+  - {name: Omada Health, ats: greenhouse, slug: omadahealth}
+  - {name: Doximity, ats: greenhouse, slug: doximity}
+  - {name: Natera, ats: greenhouse, slug: natera}
+  - {name: Headway, ats: ashby, slug: headway}
+  - {name: Hinge Health, ats: ashby, slug: hinge-health}
+  - {name: Abridge, ats: ashby, slug: abridge}
+  - {name: Lyra Health, ats: lever, slug: lyrahealth}
+  - {name: Veeva Systems, ats: lever, slug: veeva}
+  - {name: Stryker, ats: workday, tenant: stryker, wd: wd1, site: StrykerCareers}
+  - {name: BD (Becton Dickinson), ats: workday, tenant: bdx, wd: wd1, site: EXTERNAL_CAREER_SITE_USA}
+  - {name: Medtronic, ats: workday, tenant: medtronic, wd: wd1, site: MedtronicCareers}   # unverified
+  # Hospital systems
+  - {name: Kaiser Permanente, ats: talentbrew, base: "https://www.kaiserpermanentejobs.org", list_path: /category/information-technology-jobs/641/11210/1, max_pages: 10}
+  - {name: Hoag, ats: oracle, host: iaucqy.fa.ocs.oraclecloud.com, site: CX_1, job_url: "https://jobs.hoag.org/en/sites/CX_1/job/"}   # unverified
+  # Providence uses Oracle too (host evac.fa.us2.oraclecloud.com). To enable: click Apply on any
+  # Providence job, copy the code after /sites/ in the URL, put it in `site`, and remove the leading '#'.
+  # - {name: Providence, ats: oracle, host: evac.fa.us2.oraclecloud.com, site: CX_XXXX}
+
+  # --- Remote-friendly infra / observability / SaaS ---
+  - {name: CrowdStrike, ats: workday, tenant: crowdstrike, wd: wd5, site: crowdstrikecareers}
+  - {name: Datadog, ats: greenhouse, slug: datadog}
+  - {name: Cloudflare, ats: greenhouse, slug: cloudflare}
+  - {name: GitLab, ats: greenhouse, slug: gitlab}
+  - {name: Elastic, ats: greenhouse, slug: elastic}
+  - {name: MongoDB, ats: greenhouse, slug: mongodb}
+  - {name: Twilio, ats: greenhouse, slug: twilio}
+  - {name: Okta, ats: greenhouse, slug: okta}
+  - {name: PagerDuty, ats: greenhouse, slug: pagerduty}
+  - {name: Grafana Labs, ats: greenhouse, slug: grafanalabs}
+  - {name: Fastly, ats: greenhouse, slug: fastly}
+  - {name: Samsara, ats: greenhouse, slug: samsara}
+  - {name: Databricks, ats: greenhouse, slug: databricks}
+  - {name: Airtable, ats: greenhouse, slug: airtable}
+  - {name: Figma, ats: greenhouse, slug: figma}
+  - {name: Discord, ats: greenhouse, slug: discord}
+  - {name: Reddit, ats: greenhouse, slug: reddit}
+  - {name: Duolingo, ats: greenhouse, slug: duolingo}
+  - {name: Tailscale, ats: greenhouse, slug: tailscale}
+  - {name: Dropbox, ats: greenhouse, slug: dropbox}
+  - {name: Asana, ats: greenhouse, slug: asana}
+  - {name: HubSpot, ats: greenhouse, slug: hubspotjobs}
+  - {name: Zscaler, ats: greenhouse, slug: zscaler}
+  - {name: Sumo Logic, ats: greenhouse, slug: sumologic}
+  - {name: Honeycomb, ats: greenhouse, slug: honeycomb}
+  - {name: Netlify, ats: greenhouse, slug: netlify}
+  - {name: Vercel, ats: greenhouse, slug: vercel}
+  - {name: Temporal, ats: ashby, slug: temporal}
+  - {name: CockroachDB, ats: greenhouse, slug: cockroachlabs}
+  - {name: Supabase, ats: ashby, slug: supabase}
+  - {name: PostHog, ats: ashby, slug: posthog}
+  - {name: Sentry, ats: ashby, slug: sentry}
+  - {name: Linear, ats: ashby, slug: linear}
+  - {name: Vanta, ats: ashby, slug: vanta}
+  - {name: Render, ats: ashby, slug: render}
+  - {name: Palantir, ats: lever, slug: palantir}
+
+# Removed 2026-11-17: board name not found on Greenhouse/Lever/Ashby (or Workday site changed).
+# If you find one's real job board URL, add it back above.
+#   Alteryx, Rivian, ServiceTitan, Blizzard, Snap, Ring, CoreLogic, Alpaca, Chainalysis, Marqeta, Public.com, Tempus AI, Mistral AI
+#   Confluent, Spotify (their boards returned 0 jobs; probably moved)

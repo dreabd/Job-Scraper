@@ -1,0 +1,36 @@
+name: jobwatch
+
+on:
+  schedule:
+    # Every 30 min, Mon–Fri, ~6am–8pm Pacific (times are UTC).
+    - cron: "*/30 13-23 * * 1-5"
+    - cron: "*/30 0-3 * * 2-6"
+  workflow_dispatch: {}   # "Run workflow" button for manual runs
+
+permissions:
+  contents: write         # to commit seen.json back
+
+concurrency:
+  group: jobwatch
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pyyaml
+      - name: Scan job boards
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python watch.py
+      - name: Save seen jobs
+        run: |
+          git config user.name "jobwatch-bot"
+          git config user.email "jobwatch-bot@users.noreply.github.com"
+          git add seen.json
+          git diff --cached --quiet || git commit -m "update seen jobs" && git push
