@@ -1,6 +1,23 @@
 {
- "updated": "2026-11-17T18:30:11.264404+00:00",
+ "updated": "2026-11-17T23:46:04.631902+00:00",
  "jobs": [
+  {
+   "id": "gh:andurilindustries:5282155007",
+   "title": "Infrastructure Engineer, Space",
+   "company": "Anduril",
+   "location": "Costa Mesa, California, United States",
+   "url": "https://boards.greenhouse.io/andurilindustries/jobs/5282155007?gh_jid=5282155007",
+   "verdict": "GO (warm channel only)",
+   "years": 4,
+   "salary": "$132,000",
+   "flags": [
+    "clearance",
+    "K8s required?"
+   ],
+   "remote": false,
+   "posted": "2026-11-17T15:31:41-05:00",
+   "found": "2026-11-17T23:46:04.631902+00:00"
+  },
   {
    "id": "wd:crowdstrike:/job/USA---Remote/Professional-Services-Technical-Operations-Engineer--Agentic-AI--Remote-_R30910",
    "title": "Professional Services Technical Operations Engineer- Agentic AI (Remote)",
