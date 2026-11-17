@@ -50,7 +50,7 @@ jobs:
   publish:
     # Republish the page only when matches changed (or on a manual run).
     needs: scan
-    if: needs.scan.outputs.site_changed == 'true' || github.event_name == 'workflow_dispatch'
+    if: needs.scan.outputs.site_changed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
