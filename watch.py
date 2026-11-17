@@ -30,6 +30,8 @@ import yaml
 
 ROOT = Path(__file__).parent
 STATE = ROOT / "seen.json"
+MATCHES = ROOT / "docs" / "matches.json"   # read by docs/index.html (GitHub Pages)
+KEEP_DAYS = 45
 UA = {"User-Agent": "jobwatch/1.0 (personal job alert script)"}
 TIMEOUT = 25
 
@@ -130,19 +132,39 @@ def fetch_ashby(c) -> list[Job]:
     return out
 
 
+def workday_search(api: str, term: str) -> list[dict]:
+    """POST a Workday search, backing off on 429 (Too Many Requests)."""
+    for attempt in range(4):
+        r = requests.post(api, timeout=TIMEOUT, json={"appliedFacets": {}, "limit": 20, "offset": 0,
+                                                      "searchText": term},
+                          headers={**UA, "Content-Type": "application/json",
+                                   "Accept": "application/json", "Accept-Language": "en-US"})
+        if r.status_code == 429 and attempt < 3:
+            wait = r.headers.get("Retry-After", "")
+            time.sleep(int(wait) if wait.isdigit() else 5 * 2 ** attempt)  # 5s, 10s, 20s
+            continue
+        r.raise_for_status()
+        return r.json().get("jobPostings", [])
+    return []
+
+
 def fetch_workday(c) -> list[Job]:
     base = f"https://{c['tenant']}.{c['wd']}.myworkdayjobs.com"
     api = f"{base}/wday/cxs/{c['tenant']}/{c['site']}/jobs"
     out, seen = [], set()
     # Workday ranks search results by relevance, not date, so use narrow terms that
     # match the target titles; each returns few enough results that new ones aren't missed.
-    for term in ["site reliability", "devops", "support engineer", "production support",
-                 "production engineer", "application support", "technical operations",
-                 "cloud operations", "platform engineer", "infrastructure engineer"]:
-        r = requests.post(api, headers={**UA, "Content-Type": "application/json"}, timeout=TIMEOUT,
-                          json={"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": term})
-        r.raise_for_status()
-        for j in r.json().get("jobPostings", []):
+    terms = ["site reliability", "devops", "support engineer", "production",
+             "application support", "operations engineer"]
+    failures = []
+    for term in terms:
+        time.sleep(1.5)  # Workday rate-limits bursts (HTTP 429)
+        try:
+            postings = workday_search(api, term)
+        except Exception as e:  # noqa: BLE001
+            failures.append(e)
+            continue
+        for j in postings:
             path = j.get("externalPath", "")
             if path in seen:
                 continue
@@ -161,6 +183,11 @@ def fetch_workday(c) -> list[Job]:
                 url=f"{base}/{c['site']}{path}", uid=f"wd:{c['tenant']}:{path}", posted=posted,
                 remote_hint="remote" in (j.get("locationsText", "") + j.get("remoteType", "")).lower(),
             ))
+    if failures and len(failures) == len(terms):
+        raise failures[0]
+    if failures:
+        print(f"  ! {c['name']} (workday): {len(failures)}/{len(terms)} searches failed: {failures[0]}",
+              file=sys.stderr)
     return out
 
 
@@ -355,9 +382,7 @@ def score_text(job: Job) -> bool:
 
 
 # ---------------------------------------------------------------- notify
-def notify(job: Job) -> None:
-    topic = os.environ.get("NTFY_TOPIC")
-    server = os.environ.get("NTFY_SERVER", "https://ntfy.sh").rstrip("/")
+def job_lines(job: Job) -> list[str]:
     age = ""
     if job.posted:
         mins = int((datetime.now(timezone.utc) - job.posted).total_seconds() // 60)
@@ -369,15 +394,60 @@ def notify(job: Job) -> None:
         f"posted {age}" if age else "",
         ("flags: " + ", ".join(job.flags)) if job.flags else "",
     ]
-    body = "\n".join(l for l in lines if l)
-    if os.environ.get("DRY_RUN") or not topic:
-        print(f"\n[{job.title}]\n{body}\n{job.url}")
-        return
+    return [l for l in lines if l]
+
+
+def send_email(jobs: list[Job]) -> None:
+    """One digest email per run. Env: SMTP_USER, SMTP_PASS (Gmail app password), EMAIL_TO (optional)."""
+    import smtplib
+    from email.message import EmailMessage
+    user, pw = os.environ["SMTP_USER"], os.environ["SMTP_PASS"]
+    to = os.environ.get("EMAIL_TO") or user
+    go = sum(j.verdict == "GO" for j in jobs)
+    msg = EmailMessage()
+    msg["Subject"] = (f"jobwatch: {len(jobs)} new match{'es' if len(jobs) != 1 else ''}"
+                      + (f" ({go} GO)" if go else "") + f" — {jobs[0].title} @ {jobs[0].company}")
+    msg["From"], msg["To"] = user, to
+    msg.set_content("\n\n".join(
+        f"{j.title}\n" + "\n".join(job_lines(j)) + f"\n{j.url}" for j in jobs))
+    esc = html.escape
+    rows = "".join(
+        f'<div style="margin:0 0 18px"><a href="{esc(j.url)}" style="font-size:16px;font-weight:600">'
+        f'{esc(j.title)}</a><br>' + "<br>".join(esc(l) for l in job_lines(j)) + "</div>" for j in jobs)
+    msg.add_alternative(f'<div style="font-family:-apple-system,Arial,sans-serif;font-size:14px">{rows}</div>',
+                        subtype="html")
+    with smtplib.SMTP_SSL(os.environ.get("SMTP_HOST", "smtp.gmail.com"), 465, timeout=TIMEOUT) as s:
+        s.login(user, pw)
+        s.send_message(msg)
+
+
+def notify_ntfy(job: Job) -> None:
+    topic = os.environ["NTFY_TOPIC"]
+    server = os.environ.get("NTFY_SERVER", "https://ntfy.sh").rstrip("/")
+    body = "\n".join(job_lines(job))
     requests.post(f"{server}/{topic}", data=body.encode(), timeout=TIMEOUT, headers={
         "Title": f"{job.title} — {job.company}".encode("utf-8").decode("latin-1", "ignore"),
         "Click": job.url, "Tags": "briefcase",
         "Priority": "high" if job.verdict == "GO" else "default",
     })
+
+
+def save_matches(new: list[Job]) -> None:
+    """Append new matches to docs/matches.json (newest first), dropping ones older than KEEP_DAYS."""
+    now = datetime.now(timezone.utc)
+    data = json.loads(MATCHES.read_text()) if MATCHES.exists() else {"jobs": []}
+    known = {j["id"] for j in data["jobs"]}
+    added = [{
+        "id": j.uid, "title": j.title, "company": j.company, "location": j.location.strip(),
+        "url": j.url, "verdict": j.verdict, "years": j.years, "salary": j.salary,
+        "flags": j.flags, "remote": bool(j.remote_hint or "remote" in j.location.lower()),
+        "posted": j.posted.isoformat() if j.posted else None, "found": now.isoformat(),
+    } for j in new if j.uid not in known]
+    cutoff = (now - timedelta(days=KEEP_DAYS)).isoformat()
+    jobs = added + [j for j in data["jobs"] if j["found"] >= cutoff]
+    if added or len(jobs) != len(data["jobs"]) or not MATCHES.exists():
+        MATCHES.parent.mkdir(exist_ok=True)
+        MATCHES.write_text(json.dumps({"updated": now.isoformat(), "jobs": jobs}, indent=1))
 
 
 # ---------------------------------------------------------------- main
@@ -396,8 +466,12 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             return c, [], e
 
+    # Fast JSON boards in parallel; Workday one company at a time (it rate-limits bursts).
+    fast = [c for c in cfg["companies"] if c["ats"] != "workday"]
+    slow = [c for c in cfg["companies"] if c["ats"] == "workday"]
     with ThreadPoolExecutor(max_workers=12) as ex:
-        results = list(ex.map(run, cfg["companies"]))
+        results = list(ex.map(run, fast))
+    results += [run(c) for c in slow]
 
     matches, errors, total = [], [], 0
     for c, jobs, err in results:
@@ -428,9 +502,21 @@ def main() -> int:
           + (" (first run)" if first_run else ""))
     for e in errors:
         print("  ! " + e, file=sys.stderr)
-    for j in matches[:15]:
-        notify(j)
-        time.sleep(0.5)
+    for j in matches:
+        print(f"\n[{j.title}]\n" + "\n".join(job_lines(j)) + f"\n{j.url}")
+    if matches and not os.environ.get("DRY_RUN"):
+        if os.environ.get("SMTP_USER") and os.environ.get("SMTP_PASS"):
+            try:
+                send_email(matches)
+                print("emailed digest")
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! email failed: {e}", file=sys.stderr)
+        if os.environ.get("NTFY_TOPIC"):
+            for j in matches[:15]:
+                notify_ntfy(j)
+                time.sleep(0.5)
+
+    save_matches(matches)
 
     # prune state older than 60 days
     old = (datetime.now(timezone.utc) - timedelta(days=60)).isoformat()

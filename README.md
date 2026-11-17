@@ -36,3 +36,13 @@ Private repos get 2,000 free Actions minutes a month. This uses about 1 minute p
 pip install requests pyyaml
 DRY_RUN=1 python watch.py     # prints matches instead of sending them
 ```
+
+## Matches page (no notifications)
+
+Each run adds new matches to `docs/matches.json`. The workflow publishes `docs/index.html` with GitHub Pages as a job-board-style page. It has Inbox, Saved, Applied and Hidden tabs, search and filters, and a "New" badge on anything found since your last visit. Your Saved, Applied and Hidden choices are kept in your browser.
+
+One-time setup: go to repo **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. Then run the workflow once by hand. The page address is `https://<username>.github.io/<repo>/`.
+
+GitHub Pages is free for public repos. Private repos need a paid GitHub plan.
+
+Email and ntfy alerts stay off unless you add their secrets (`SMTP_USER`/`SMTP_PASS` or `NTFY_TOPIC`).

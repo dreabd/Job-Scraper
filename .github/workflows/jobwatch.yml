@@ -8,7 +8,9 @@ on:
   workflow_dispatch: {}   # "Run workflow" button for manual runs
 
 permissions:
-  contents: write         # to commit seen.json back
+  contents: write         # commit seen.json + docs/matches.json back
+  pages: write            # publish the matches page
+  id-token: write         # required by deploy-pages
 
 concurrency:
   group: jobwatch
@@ -18,19 +20,46 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      site_changed: ${{ steps.save.outputs.site_changed }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install requests pyyaml
       - name: Scan job boards
+        # Optional alerts stay off unless these secrets exist.
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: python watch.py
-      - name: Save seen jobs
+      - name: Save state
+        id: save
         run: |
           git config user.name "jobwatch-bot"
           git config user.email "jobwatch-bot@users.noreply.github.com"
-          git add seen.json
-          git diff --cached --quiet || git commit -m "update seen jobs" && git push
+          git add seen.json docs/
+          if git diff --cached --quiet -- docs/; then echo "site_changed=false" >> "$GITHUB_OUTPUT";
+          else echo "site_changed=true" >> "$GITHUB_OUTPUT"; fi
+          git diff --cached --quiet || { git commit -m "update jobs" && git push; }
+
+  publish:
+    # Republish the page only when matches changed (or on a manual run).
+    needs: scan
+    if: needs.scan.outputs.site_changed == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main       # pick up the commit the scan job just pushed
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deploy
+        uses: actions/deploy-pages@v4
