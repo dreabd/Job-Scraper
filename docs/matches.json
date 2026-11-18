@@ -1,6 +1,22 @@
 {
- "updated": "2026-11-17T23:46:04.631902+00:00",
+ "updated": "2026-11-18T15:05:43.389515+00:00",
  "jobs": [
+  {
+   "id": "gh:twilio:8385593",
+   "title": "Software Engineer - Platform Engineering",
+   "company": "Twilio",
+   "location": "Remote - US",
+   "url": "https://job-boards.greenhouse.io/twilio/jobs/8385593",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "$108,720",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-18T09:42:48-05:00",
+   "found": "2026-11-18T15:05:43.389515+00:00"
+  },
   {
    "id": "gh:andurilindustries:5282155007",
    "title": "Infrastructure Engineer, Space",
