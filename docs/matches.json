@@ -1,6 +1,43 @@
 {
- "updated": "2026-11-18T23:35:11.651994+00:00",
+ "updated": "2026-11-18T23:52:30.626985+00:00",
  "jobs": [
+  {
+   "id": "ab:exegy:926dc44a-1b79-4a2f-b7c3-ea36ffff0fa3",
+   "title": "Production Support & Monitoring Engineer",
+   "company": "Exegy",
+   "location": "Belfast",
+   "url": "https://jobs.ashbyhq.com/exegy/926dc44a-1b79-4a2f-b7c3-ea36ffff0fa3",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "",
+   "flags": [
+    "remote\u2014check US/CA eligibility"
+   ],
+   "remote": true,
+   "posted": "2026-11-18T18:18:52.729000+00:00",
+   "found": "2026-11-18T23:52:30.626985+00:00",
+   "favorite": false,
+   "source": "ab",
+   "fit": 81,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "Runbooks",
+    "Trading systems",
+    "Grafana",
+    "Prometheus",
+    "Linux",
+    "Python",
+    "Bash",
+    "Monitoring"
+   ],
+   "gaps": [
+    "CS degree"
+   ],
+   "excerpt": "About Exegy\n\nExegy is a global leader in intelligent market data, advanced trading systems, and future-proof technology. Exegy serves as a trusted partner to the complete ecosystem of the buy-side, sell-side, exchanges, and financial services technology firms around the globe. Headquartered in St. Louis with regional offices in North America, the UK/Europe and Asia Pacific, Exegy has the global footprint to deliver world-class support and managed services to its customer base of elite financial market participants.\n\nJob Summary\n\nExegy is seeking a highly motivated Production Support & Monitoring Engineer to ensure the reliability, performance, and availability of its production systems. This role involves monitoring critical systems, resolving incidents, and implementing preventative measures to maintain operational excellence. You will collaborate with internal teams to address \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/smile-digital-health/jobs/associate-cloud-engineer",
    "title": "Associate Cloud Engineer",
