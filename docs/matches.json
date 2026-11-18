@@ -1,6 +1,42 @@
 {
- "updated": "2026-11-18T21:35:33.430079+00:00",
+ "updated": "2026-11-18T22:05:33.798976+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/smile-digital-health/jobs/associate-cloud-engineer",
+   "title": "Associate Cloud Engineer",
+   "company": "Smile Digital Health",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/smile-digital-health/jobs/associate-cloud-engineer?utm_source=api",
+   "verdict": "GO",
+   "years": 1,
+   "salary": "$80,000\u2013$92,000/yr",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-18T21:09:50+00:00",
+   "found": "2026-11-18T22:05:33.798976+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 92,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Runbooks",
+    "CloudWatch",
+    "Terraform",
+    "Python",
+    "Bash",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes"
+   ],
+   "excerpt": "requirements, access details, customer dependencies and outstanding actions before implementation. Coordinate with Cloud Products and project teams to clarify customer requirements, confirm agreed service scope and track technical actions through pre-sales, pre-implementation and post-sales handoffs. Support pre-production networking and connectivity checks, including DNS, firewall rules, VPN connections and load balancers, using approved procedures and senior-engineer guidance. Support integrations between Azure Kubernetes Service (AKS) or Amazon Elastic Container Service (ECS) and client-facing dependencies, including storage, databases, messaging, DNS resolution, firewall rules, private endpoints, and service connectivity. Support secure environments through approved access, configuration and change-management procedures. Coordinate installation change requests for Change Advisory \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/cleerly-inc/jobs/support-engineer",
    "title": "Support Engineer",
