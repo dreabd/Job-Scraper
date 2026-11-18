@@ -2,11 +2,12 @@ name: jobwatch
 
 on:
   schedule:
-    # Every 30 min, Mon–Fri, ~6am–8pm Pacific (times are UTC). Minutes 7/37 avoid the
+    # Every 30 min, Mon–Fri, ~6am–8pm Pacific (times are UTC). Minutes 2/32 avoid the
     # top-of-hour rush, when GitHub delays or drops scheduled runs.
+    # Backup only: cron-job.org is the main trigger (via the API).
     - cron: "2,32 13-23 * * 1-5"
     - cron: "2,32 0-3 * * 2-6"
-  workflow_dispatch: {}   # "Run workflow" button for manual runs
+  workflow_dispatch: {}   # "Run workflow" button + cron-job.org API calls
 
 permissions:
   contents: write         # commit seen.json + docs/matches.json back
@@ -25,6 +26,8 @@ jobs:
       site_changed: ${{ steps.save.outputs.site_changed }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # full history so the save step can rebase cleanly
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -45,10 +48,17 @@ jobs:
           git add seen.json docs/
           if git diff --cached --quiet -- docs/; then echo "site_changed=false" >> "$GITHUB_OUTPUT";
           else echo "site_changed=true" >> "$GITHUB_OUTPUT"; fi
-          git diff --cached --quiet || { git commit -m "update jobs" && git push; }
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "update jobs"
+          # If someone pushed while this run was scanning, rebase on top and retry.
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            sleep 5
+          done
+          echo "Could not push after 3 tries"; exit 1
 
   publish:
-    # Republish the page only when matches changed (or on a manual run).
+    # Republish the page only when matches changed.
     needs: scan
     if: needs.scan.outputs.site_changed == 'true'
     runs-on: ubuntu-latest
