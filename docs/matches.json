@@ -1,6 +1,36 @@
 {
- "updated": "2026-11-18T19:05:33.347697+00:00",
+ "updated": "2026-11-18T19:35:30.406976+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/cleerly-inc/jobs/support-engineer",
+   "title": "Support Engineer",
+   "company": "Cleerly, Inc.",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/cleerly-inc/jobs/support-engineer?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "$85,000\u2013$99,000/yr",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-18T18:45:13+00:00",
+   "found": "2026-11-18T19:35:30.406976+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 60,
+   "skills": [
+    "CloudWatch",
+    "SQL",
+    "Python",
+    "Bash",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "CS degree"
+   ],
+   "excerpt": "requirements in the job description. While we are mostly a remote company, travel is required for some team meetings and cross function projects typically once per month or once per quarter, for some roles like sales or external facing roles travel could be up to 90% of the time. Cleerly is committed to providing safe and effective medical software that meets customer needs and our intended use. The adherence to all applicable regulatory and statutory requirements establishes a clear framework for setting measurable quality objectives. Our commitment to continually improving our products and processes proactively manages risks, ensuring ongoing compliance throughout the entire software lifecycle. Understanding this role's relevance and importance is critical to achieving Cleerly's quality objectives. Job Description We have an immediate opening for a skilled and motivated Support \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/vibrant-emotional-health/jobs/devops-engineer-i",
    "title": "DevOps Engineer I",
