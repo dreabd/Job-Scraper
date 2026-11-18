@@ -222,7 +222,8 @@ companies:
   - {name: Vanta, ats: ashby, slug: vanta}
   - {name: Render, ats: ashby, slug: render}
   - {name: Palantir, ats: lever, slug: palantir}
-
+  # --- added with add_company.py ---
+  - {name: "Yum! Brands (Taco Bell)", ats: oracle, site: CX_1, host: eczd.fa.us2.oraclecloud.com, keywords: [engineer, support, devops, reliability, operations, analyst]}
 # Removed 2026-11-17: board name not found on Greenhouse/Lever/Ashby (or Workday site changed).
 # If you find one's real job board URL, add it back above.
 #   Alteryx, Rivian, ServiceTitan, Blizzard, Snap, Ring, CoreLogic, Alpaca, Chainalysis, Marqeta, Public.com, Tempus AI, Mistral AI
