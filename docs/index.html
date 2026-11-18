@@ -3,99 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Job Matches</title>
+<title>jobwatch</title>
 <meta name="robots" content="noindex">
 <style>
   :root {
-    --bg: #f6f7f9; --card: #ffffff; --text: #1a1d23; --muted: #5f6673; --line: #e3e6eb;
-    --accent: #2457d6; --accent-soft: #e8eefc;
-    --go: #137a3f; --go-soft: #e3f4ea; --warm: #9a5b00; --warm-soft: #fbf0dc;
-    --maybe: #5f6673; --maybe-soft: #eef0f3; --flag: #a3262a; --flag-soft: #fbe7e7;
-    --new: #2457d6;
+    --bg: #f3f2ef; --card: #ffffff; --text: #191919; --muted: #666666; --line: #e0dfdc; --hover: #f5f5f4;
+    --accent: #0a66c2; --accent-soft: #e8f1fb; --sel: #edf3f8;
+    --go: #057642; --go-soft: #e6f4ec; --warm: #915907; --warm-soft: #fcf1dd;
+    --gap: #b24020; --gap-soft: #fcebe5; --neutral-soft: #eef0f2;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #111317; --card: #1a1d23; --text: #e8eaee; --muted: #9aa1ad; --line: #2b2f37;
-      --accent: #7ea2ff; --accent-soft: #1e2a45;
-      --go: #5fd08f; --go-soft: #16301f; --warm: #f0b55c; --warm-soft: #33270f;
-      --maybe: #9aa1ad; --maybe-soft: #23262d; --flag: #ff8a8e; --flag-soft: #3a1c1e;
-      --new: #7ea2ff;
+      --bg: #0f1114; --card: #1b1f23; --text: #e9eaec; --muted: #9ca3ab; --line: #2c3238; --hover: #22272c;
+      --accent: #70b5f9; --accent-soft: #16283b; --sel: #1d2a37;
+      --go: #6dd39a; --go-soft: #15301f; --warm: #f1bb63; --warm-soft: #33270f;
+      --gap: #ff9a7a; --gap-soft: #3a1d16; --neutral-soft: #262b31;
     }
   }
   * { box-sizing: border-box; }
+  html, body { height: 100%; }
   body { margin: 0; background: var(--bg); color: var(--text);
-         font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 20px 16px 60px; }
-  header h1 { font-size: 22px; margin: 0 0 2px; }
-  header p { margin: 0; color: var(--muted); font-size: 13px; }
-  .tabs { display: flex; gap: 4px; margin: 18px 0 10px; border-bottom: 1px solid var(--line); overflow-x: auto; }
-  .tab { border: 0; background: none; color: var(--muted); padding: 8px 12px; font: inherit; cursor: pointer;
-         border-bottom: 2px solid transparent; white-space: nowrap; }
-  .tab.on { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
-  .tab .n { font-size: 12px; color: var(--muted); margin-left: 4px; }
-  .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .controls input, .controls select { font: inherit; padding: 7px 10px; border: 1px solid var(--line);
-         border-radius: 8px; background: var(--card); color: var(--text); }
-  .controls input { flex: 1 1 200px; min-width: 0; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
-          margin-bottom: 10px; }
-  .card.isnew { border-left: 3px solid var(--new); }
-  .top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
-  .title { font-size: 16px; font-weight: 600; color: var(--accent); text-decoration: none; }
-  .title:hover { text-decoration: underline; }
-  .co { color: var(--text); margin-top: 2px; }
-  .meta { color: var(--muted); font-size: 13px; margin-top: 6px; }
-  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .b { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--maybe-soft); color: var(--maybe); }
-  .b.go { background: var(--go-soft); color: var(--go); font-weight: 600; }
-  .b.warm { background: var(--warm-soft); color: var(--warm); font-weight: 600; }
-  .b.flag { background: var(--flag-soft); color: var(--flag); }
-  .b.new { background: var(--accent-soft); color: var(--new); font-weight: 600; }
-  .acts { display: flex; gap: 4px; flex-shrink: 0; }
-  .acts button { font: inherit; font-size: 12px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px;
-                 background: var(--card); color: var(--muted); cursor: pointer; }
-  .acts button.on { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
-  .empty { text-align: center; color: var(--muted); padding: 40px 0; }
-  @media (max-width: 520px) { .top { flex-direction: column; } }
+         font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+
+  /* top bar */
+  .bar { position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line); }
+  .bar-in { max-width: 1180px; margin: 0 auto; padding: 10px 16px; display: flex; gap: 12px; align-items: center; }
+  .brand { font-weight: 700; font-size: 18px; color: var(--accent); white-space: nowrap; }
+  .search { flex: 1; min-width: 0; background: var(--neutral-soft); border: 0; border-radius: 6px; padding: 8px 12px; }
+  .stats { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .filters { max-width: 1180px; margin: 0 auto; padding: 0 16px 10px; display: flex; gap: 8px; overflow-x: auto; }
+  .filters select { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px;
+                    cursor: pointer; flex-shrink: 0; }
+  .filters select.on { border-color: var(--go); color: var(--go); font-weight: 600; }
+  .chk { display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 999px;
+         padding: 5px 12px; white-space: nowrap; cursor: pointer; flex-shrink: 0; background: var(--card); }
+
+  /* layout */
+  .main { max-width: 1180px; margin: 16px auto; padding: 0 16px; display: grid;
+          grid-template-columns: minmax(300px, 400px) 1fr; gap: 16px; align-items: start; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .tabs { display: flex; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  .tab { border: 0; background: none; padding: 11px 12px; cursor: pointer; color: var(--muted); white-space: nowrap;
+         border-bottom: 2px solid transparent; }
+  .tab.on { color: var(--go); border-bottom-color: var(--go); font-weight: 600; }
+  .tab .n { font-size: 12px; margin-left: 3px; }
+  .list { max-height: calc(100vh - 190px); overflow-y: auto; }
+  .row { display: flex; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); cursor: pointer;
+         position: relative; }
+  .row:hover { background: var(--hover); }
+  .row.sel { background: var(--sel); box-shadow: inset 3px 0 0 var(--accent); }
+  .logo { width: 44px; height: 44px; border-radius: 6px; flex-shrink: 0; display: grid; place-items: center;
+          color: #fff; font-weight: 700; font-size: 15px; letter-spacing: .5px; }
+  .logo.big { width: 64px; height: 64px; font-size: 22px; }
+  .r-title { font-weight: 600; color: var(--accent); line-height: 1.3; }
+  .r-sub { color: var(--text); font-size: 13px; }
+  .r-meta { color: var(--muted); font-size: 12px; margin-top: 3px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); position: absolute; right: 12px; top: 16px; }
+  .fit { font-size: 12px; font-weight: 600; padding: 1px 7px; border-radius: 999px; }
+  .fit.hi { background: var(--go-soft); color: var(--go); }
+  .fit.mid { background: var(--warm-soft); color: var(--warm); }
+  .fit.lo { background: var(--neutral-soft); color: var(--muted); }
+  .empty { padding: 40px 20px; text-align: center; color: var(--muted); }
+
+  /* detail */
+  .detail { padding: 22px 24px; position: sticky; top: 112px; max-height: calc(100vh - 128px); overflow-y: auto; }
+  .back { display: none; border: 0; background: none; color: var(--accent); padding: 0 0 12px; cursor: pointer; }
+  .d-head { display: flex; gap: 14px; align-items: flex-start; }
+  .d-title { font-size: 22px; font-weight: 600; margin: 0; line-height: 1.25; }
+  .d-co { margin-top: 2px; }
+  .d-meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .chip { background: var(--neutral-soft); border-radius: 4px; padding: 3px 8px; font-size: 13px; }
+  .chip.go { background: var(--go-soft); color: var(--go); font-weight: 600; }
+  .chip.warm { background: var(--warm-soft); color: var(--warm); font-weight: 600; }
+  .chip.gap { background: var(--gap-soft); color: var(--gap); }
+  .chip.skill { background: var(--go-soft); color: var(--go); }
+  .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .btn { border: 1px solid var(--accent); color: var(--accent); background: none; border-radius: 999px;
+         padding: 6px 16px; font-weight: 600; cursor: pointer; text-decoration: none; }
+  .btn.primary { background: var(--accent); color: var(--card); }
+  .btn.on { background: var(--accent-soft); }
+  .sec { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; }
+  .sec h3 { font-size: 16px; margin: 0 0 8px; }
+  .meter { height: 8px; background: var(--neutral-soft); border-radius: 999px; overflow: hidden; margin: 6px 0 10px; }
+  .meter i { display: block; height: 100%; background: var(--go); border-radius: 999px; }
+  .lbl { color: var(--muted); font-size: 12px; margin: 10px 0 4px; }
+  .excerpt { white-space: pre-wrap; color: var(--text); font-size: 14px; }
+  textarea { width: 100%; min-height: 70px; border: 1px solid var(--line); border-radius: 6px; padding: 8px;
+             background: var(--card); resize: vertical; }
+  .muted { color: var(--muted); }
+  .star { color: #d4a017; }
+
+  @media (max-width: 820px) {
+    .main { grid-template-columns: 1fr; }
+    .list { max-height: none; }
+    .detail { display: none; position: static; max-height: none; }
+    body.reading .detail { display: block; }
+    body.reading .listpanel { display: none; }
+    .back { display: inline-block; }
+    .stats { display: none; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>Job Matches</h1>
-    <p id="sub">Loading…</p>
-  </header>
-  <nav class="tabs" id="tabs"></nav>
-  <div class="controls">
-    <input id="q" type="search" placeholder="Search title, company, location">
-    <select id="verdict">
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand">jobwatch</div>
+    <input id="q" class="search" type="search" placeholder="Search title, company, location, skill">
+    <div class="stats" id="stats"></div>
+  </div>
+  <div class="filters">
+    <select id="f-where" title="Work type">
+      <option value="">Any work type</option><option>Remote</option><option>Hybrid</option><option>On-site</option>
+    </select>
+    <select id="f-date" title="Date found">
+      <option value="">Any time</option><option value="1">Past 24 hours</option>
+      <option value="3">Past 3 days</option><option value="7">Past week</option>
+    </select>
+    <select id="f-verdict" title="Verdict">
       <option value="">All verdicts</option><option value="GO">GO</option>
       <option value="warm">Warm channel only</option><option value="MAYBE">Maybe</option>
     </select>
-    <select id="where">
-      <option value="">Remote + local</option><option value="remote">Remote only</option>
-      <option value="local">Local only</option>
+    <select id="f-sort" title="Sort">
+      <option value="fit">Best fit</option><option value="found">Newest</option><option value="posted">Recently posted</option>
     </select>
-    <select id="sort">
-      <option value="found">Newest found</option><option value="posted">Newest posted</option>
-    </select>
+    <label class="chk"><input type="checkbox" id="f-pay"> Pay listed</label>
+    <label class="chk"><input type="checkbox" id="f-nok8s"> No Kubernetes</label>
+    <label class="chk"><input type="checkbox" id="f-fav"> ★ Favorites only</label>
   </div>
-  <main id="list"></main>
+</header>
+
+<div class="main">
+  <section class="panel listpanel">
+    <nav class="tabs" id="tabs"></nav>
+    <div class="list" id="list"></div>
+  </section>
+  <section class="panel detail" id="detail"></section>
 </div>
+
 <script>
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 };
-const status = store.get("jw-status", {});          // id -> "saved" | "applied" | "hidden"
-const lastVisit = store.get("jw-last-visit", null);  // ISO time of previous visit
+const status = store.get("jw-status", {});   // id -> saved | applied | interviewing | archived
+const notes = store.get("jw-notes", {});
+const lastVisit = store.get("jw-last-visit", null);
 store.set("jw-last-visit", new Date().toISOString());
-let jobs = [], tab = "new";
 
-const TABS = [["new", "Inbox"], ["saved", "Saved"], ["applied", "Applied"], ["hidden", "Hidden"]];
+const TABS = [["inbox", "Inbox"], ["saved", "Saved"], ["applied", "Applied"], ["interviewing", "Interviewing"], ["archived", "Archived"]];
+const MOVES = [["saved", "Save"], ["applied", "Applied"], ["interviewing", "Interviewing"], ["archived", "Archive"]];
+let jobs = [], tab = "inbox", selId = null;
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
+const bucket = j => status[j.id] || "inbox";
+const isNew = j => lastVisit && j.found > lastVisit;
+const where = j => j.workplace || (j.remote ? "Remote" : "On-site");
 function ago(iso) {
   if (!iso) return "";
   const m = Math.round((Date.now() - new Date(iso)) / 60000);
@@ -104,71 +169,140 @@ function ago(iso) {
   if (m < 48 * 60) return Math.round(m / 60) + "h ago";
   return Math.round(m / 1440) + "d ago";
 }
-const bucket = j => status[j.id] || "new";
-const isNew = j => lastVisit && j.found > lastVisit;
+function logo(name, big) {
+  let h = 0; for (const c of name) h = (h * 31 + c.charCodeAt(0)) % 360;
+  const ini = name.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase();
+  return `<div class="logo ${big ? "big" : ""}" style="background:hsl(${h} 45% 42%)">${esc(ini || "?")}</div>`;
+}
+function fitBadge(j) {
+  if (j.fit == null) return "";
+  const c = j.fit >= 70 ? "hi" : j.fit >= 50 ? "mid" : "lo";
+  return `<span class="fit ${c}">${j.fit}% fit</span>`;
+}
+const SOURCES = {hm: "Himalayas", az: "Adzuna"};
+const sourceName = j => SOURCES[j.source || (j.id || "").split(":")[0]] || "company job board";
+const verdictCls = v => v === "GO" ? "go" : (v || "").includes("warm") ? "warm" : "";
 
-function render() {
-  const counts = {new: 0, saved: 0, applied: 0, hidden: 0};
-  jobs.forEach(j => counts[bucket(j)]++);
-  $("tabs").innerHTML = TABS.map(([k, label]) =>
-    `<button class="tab ${k === tab ? "on" : ""}" data-tab="${k}">${label}<span class="n">${counts[k]}</span></button>`).join("");
-
-  const q = $("q").value.trim().toLowerCase(), v = $("verdict").value, w = $("where").value;
-  let rows = jobs.filter(j => bucket(j) === tab)
-    .filter(j => !q || `${j.title} ${j.company} ${j.location}`.toLowerCase().includes(q))
+function filtered() {
+  const q = $("q").value.trim().toLowerCase();
+  const w = $("f-where").value, d = +$("f-date").value, v = $("f-verdict").value, s = $("f-sort").value;
+  const pay = $("f-pay").checked, nok8s = $("f-nok8s").checked, fav = $("f-fav").checked;
+  const since = d ? new Date(Date.now() - d * 864e5).toISOString() : "";
+  const rows = jobs.filter(j => bucket(j) === tab)
+    .filter(j => !q || [j.title, j.company, j.location, ...(j.skills || [])].join(" ").toLowerCase().includes(q))
+    .filter(j => !w || where(j) === w)
+    .filter(j => !since || j.found >= since)
     .filter(j => !v || (v === "GO" ? j.verdict === "GO" : v === "warm" ? j.verdict.includes("warm") : j.verdict.startsWith("MAYBE")))
-    .filter(j => !w || (w === "remote" ? j.remote : !j.remote));
-  const key = $("sort").value;
-  rows.sort((a, b) => String(b[key] || "").localeCompare(String(a[key] || "")));
+    .filter(j => !pay || j.salary)
+    .filter(j => !fav || j.favorite)
+    .filter(j => !nok8s || !(j.gaps || []).includes("Kubernetes") && !(j.flags || []).some(f => f.startsWith("K8s required")));
+  rows.sort((a, b) => s === "fit" ? (b.fit ?? -1) - (a.fit ?? -1) || b.found.localeCompare(a.found)
+                                  : String(b[s] || "").localeCompare(String(a[s] || "")));
+  return rows;
+}
 
-  $("list").innerHTML = rows.length ? rows.map(j => {
-    const vcls = j.verdict === "GO" ? "go" : j.verdict.includes("warm") ? "warm" : "";
-    const st = status[j.id];
-    return `<article class="card ${isNew(j) ? "isnew" : ""}">
-      <div class="top">
-        <div>
-          <a class="title" href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a>
-          <div class="co">${esc(j.company)} · ${esc(j.location || "Location not listed")}</div>
-        </div>
-        <div class="acts">
-          <button data-id="${esc(j.id)}" data-s="saved" class="${st === "saved" ? "on" : ""}">Save</button>
-          <button data-id="${esc(j.id)}" data-s="applied" class="${st === "applied" ? "on" : ""}">Applied</button>
-          <button data-id="${esc(j.id)}" data-s="hidden" class="${st === "hidden" ? "on" : ""}">Hide</button>
-        </div>
+function renderList() {
+  const counts = Object.fromEntries(TABS.map(([k]) => [k, 0]));
+  jobs.forEach(j => counts[bucket(j)]++);
+  $("tabs").innerHTML = TABS.map(([k, l]) =>
+    `<button class="tab ${k === tab ? "on" : ""}" data-tab="${k}">${l}<span class="n">${counts[k]}</span></button>`).join("");
+  ["f-where", "f-date", "f-verdict"].forEach(id => $(id).classList.toggle("on", !!$(id).value));
+
+  const rows = filtered();
+  if (!rows.find(j => j.id === selId)) selId = rows[0]?.id ?? null;
+  $("list").innerHTML = rows.length ? rows.map(j => `
+    <div class="row ${j.id === selId ? "sel" : ""}" data-id="${esc(j.id)}">
+      ${logo(j.company)}
+      <div style="min-width:0">
+        <div class="r-title">${j.favorite ? '<span class="star" title="Favorite company">★</span> ' : ""}${esc(j.title)}</div>
+        <div class="r-sub">${esc(j.company)}</div>
+        <div class="r-meta">${esc(j.location || "Location not listed")} (${where(j)})</div>
+        <div class="r-meta">${fitBadge(j)} ${j.salary ? "· " + esc(j.salary) + " " : ""}· found ${ago(j.found)}</div>
       </div>
-      <div class="badges">
-        ${isNew(j) ? '<span class="b new">New</span>' : ""}
-        <span class="b ${vcls}">${esc(j.verdict)}</span>
-        ${j.years != null ? `<span class="b">${j.years}+ yrs</span>` : ""}
-        ${j.salary ? `<span class="b">${esc(j.salary)}</span>` : ""}
-        ${(j.flags || []).map(f => `<span class="b flag">${esc(f)}</span>`).join("")}
+      ${isNew(j) ? '<span class="dot" title="New since your last visit"></span>' : ""}
+    </div>`).join("")
+    : `<div class="empty">${tab === "inbox" ? "Nothing new matches these filters. New jobs appear after each scan." : "Nothing here yet."}</div>`;
+  renderDetail();
+}
+
+function renderDetail() {
+  const j = jobs.find(x => x.id === selId);
+  if (!j) { $("detail").innerHTML = `<div class="empty">Select a job to see details.</div>`; return; }
+  const st = status[j.id];
+  const skills = j.skills || [], gaps = j.gaps || [];
+  $("detail").innerHTML = `
+    <button class="back" data-back>← Back to list</button>
+    <div class="d-head">
+      ${logo(j.company, true)}
+      <div>
+        <h2 class="d-title">${esc(j.title)}</h2>
+        <div class="d-co">${esc(j.company)}</div>
+        <div class="d-meta">${esc(j.location || "Location not listed")} · ${j.posted ? "posted " + ago(j.posted) + " · " : ""}found ${ago(j.found)}</div>
       </div>
-      <div class="meta">${j.posted ? "Posted " + ago(j.posted) + " · " : ""}Found ${ago(j.found)}</div>
-    </article>`;
-  }).join("") : `<p class="empty">${tab === "new" ? "No matches here yet. New ones show up after each scan." : "Nothing here."}</p>`;
+    </div>
+    <div class="chips">
+      <span class="chip">${where(j)}</span>
+      ${j.salary ? `<span class="chip">${esc(j.salary)}</span>` : ""}
+      <span class="chip">${j.years != null ? j.years + "+ years" : "Years not stated"}</span>
+      <span class="chip ${verdictCls(j.verdict)}">${esc(j.verdict)}</span>
+      ${j.favorite ? '<span class="chip warm">★ Favorite company</span>' : ""}
+      <span class="chip">via ${sourceName(j)}</span>
+      ${(j.flags || []).map(f => `<span class="chip gap">${esc(f)}</span>`).join("")}
+    </div>
+    <div class="acts">
+      <a class="btn primary" href="${esc(j.url)}" target="_blank" rel="noopener">Apply on company site ↗</a>
+      ${MOVES.map(([k, l]) => `<button class="btn ${st === k ? "on" : ""}" data-move="${k}">${st === k ? "✓ " : ""}${l}</button>`).join("")}
+    </div>
+
+    <div class="sec">
+      <h3>How you match</h3>
+      ${j.fit != null ? `<div class="muted">${j.fit}% fit</div><div class="meter"><i style="width:${j.fit}%"></i></div>` : ""}
+      ${skills.length ? `<div class="lbl">Your skills this posting asks for (${skills.length})</div>
+        <div class="chips" style="margin-top:0">${skills.map(s => `<span class="chip skill">✓ ${esc(s)}</span>`).join("")}</div>` : ""}
+      ${gaps.length ? `<div class="lbl">Mentioned in the posting, not on your résumé yet</div>
+        <div class="chips" style="margin-top:0">${gaps.map(s => `<span class="chip gap">${esc(s)}</span>`).join("")}</div>` : ""}
+      ${!skills.length && !gaps.length ? `<div class="muted">No skill breakdown for this job (it was found before this feature existed, or the posting had no description).</div>` : ""}
+    </div>
+
+    ${j.excerpt ? `<div class="sec"><h3>From the posting</h3><div class="excerpt">${esc(j.excerpt)}</div>
+      <p><a href="${esc(j.url)}" target="_blank" rel="noopener" style="color:var(--accent)">Read the full posting ↗</a></p></div>` : ""}
+
+    <div class="sec">
+      <h3>Notes</h3>
+      <textarea id="note" placeholder="Referral contact, recruiter name, follow-up date…">${esc(notes[j.id] || "")}</textarea>
+      <div class="lbl">Saved in this browser only.</div>
+    </div>`;
+  $("note").addEventListener("input", e => {
+    if (e.target.value) notes[j.id] = e.target.value; else delete notes[j.id];
+    store.set("jw-notes", notes);
+  });
 }
 
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-tab]");
-  if (t) { tab = t.dataset.tab; render(); return; }
-  const b = e.target.closest("button[data-s]");
-  if (b) {
-    const id = b.dataset.id;
-    status[id] = status[id] === b.dataset.s ? undefined : b.dataset.s;
-    if (!status[id]) delete status[id];
-    store.set("jw-status", status); render();
+  if (t) { tab = t.dataset.tab; selId = null; renderList(); return; }
+  const r = e.target.closest(".row");
+  if (r) { selId = r.dataset.id; document.body.classList.add("reading"); renderList();
+           if (innerWidth <= 820) scrollTo(0, 0); return; }
+  if (e.target.closest("[data-back]")) { document.body.classList.remove("reading"); return; }
+  const m = e.target.closest("[data-move]");
+  if (m && selId) {
+    status[selId] = status[selId] === m.dataset.move ? undefined : m.dataset.move;
+    if (!status[selId]) delete status[selId];
+    store.set("jw-status", status); renderList();
   }
 });
-["q", "verdict", "where", "sort"].forEach(id => $(id).addEventListener("input", render));
+["q", "f-where", "f-date", "f-verdict", "f-sort", "f-pay", "f-nok8s", "f-fav"].forEach(id => $(id).addEventListener("input", renderList));
 
 fetch("matches.json?t=" + Date.now()).then(r => r.ok ? r.json() : {jobs: []}).catch(() => ({jobs: []}))
   .then(d => {
     jobs = d.jobs || [];
-    const fresh = lastVisit ? jobs.filter(isNew).length : 0;
-    $("sub").textContent = `${jobs.length} matches from the last 45 days` +
-      (lastVisit ? ` · ${fresh} new since your last visit` : "") +
-      (d.updated ? ` · last new match ${ago(d.updated)}` : "");
-    render();
+    const fresh = lastVisit ? jobs.filter(isNew).length : jobs.length;
+    const week = jobs.filter(j => j.found >= new Date(Date.now() - 7 * 864e5).toISOString()).length;
+    const applied = jobs.filter(j => ["applied", "interviewing"].includes(status[j.id])).length;
+    $("stats").textContent = `${fresh} new · ${week} this week · ${applied} applied` +
+      (d.updated ? ` · last match ${ago(d.updated)}` : "");
+    renderList();
   });
 </script>
 </body>

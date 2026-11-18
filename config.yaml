@@ -29,9 +29,25 @@ title_include:
   - infrastructure engineer
   - technical operations
   - tech ops
-  - systems engineer
   - \bkdb\b
   - reliability engineer
+  # added 2026-11-18 (adjacent roles that fit your background)
+  - trading support
+  - trade support
+  - market data
+  - incident (?:response|manager|management|engineer)
+  - escalation engineer
+  - product support
+  - observability
+  - monitoring engineer
+  - release engineer
+  - build engineer
+  - systems administrator
+  - linux administrator
+  - cloud support
+  - dataops
+  - noc engineer
+  - network operations center
 
 # Title must NOT match any of these.
 title_exclude:
@@ -85,6 +101,11 @@ local_places:
   - riverside
   - orange county
 
+# Favorite companies: you get an alert (email, or ntfy if set up) ONLY when one of these posts a
+# matching job. Everything else just shows up on the page. Partial, case-insensitive match on the
+# company name, e.g. "Datadog", "Hudson River", "CrowdStrike". Leave empty for no alerts at all.
+favorites: []
+
 # Companies to skip entirely (case-insensitive substring of company name).
 # Empty = skip nothing. Example: - plaid
 skip_companies: []
@@ -97,6 +118,13 @@ skip_roles: []
 # Watchlist. Draft — add/remove freely.
 # ---------------------------------------------------------------------------
 companies:
+  # --- Broad feeds (many companies each) ---
+  # Himalayas: free public feed of remote jobs, newest first. No key needed.
+  - {name: Himalayas (remote feed), ats: himalayas, max_pages: 10, min_fit: 60}   # only strong fits
+  # Adzuna (off: noisiest source, lots of agency reposts). To try it, get free keys at developer.adzuna.com,
+  # add repo secrets ADZUNA_APP_ID / ADZUNA_APP_KEY, and remove the leading '#'.
+  # - {name: Adzuna (local + remote), ats: adzuna, where: "Aliso Viejo, California", distance_km: 80, max_days_old: 2, pages: 2, min_fit: 60}
+
   # --- Orange County / SoCal ---
   - {name: Weedmaps, ats: greenhouse, slug: weedmaps77}
   - {name: Anduril, ats: greenhouse, slug: andurilindustries}

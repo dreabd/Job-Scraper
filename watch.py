@@ -296,6 +296,78 @@ def fetch_talentbrew(c) -> list[Job]:
     return out
 
 
+def _lookback_cutoff() -> datetime:
+    return datetime.now(timezone.utc) - timedelta(hours=CFG.get("lookback_hours", 24))
+
+
+def fetch_himalayas(c) -> list[Job]:
+    """Himalayas public feed: remote jobs from thousands of companies, newest first.
+    Config: max_pages (100 jobs each)."""
+    cutoff, out, cursor = _lookback_cutoff(), [], None
+    for _ in range(c.get("max_pages", 10)):
+        params = {"limit": 100, **({"cursor": cursor} if cursor else {})}
+        data = get("https://himalayas.app/jobs/api", params=params)
+        page = data.get("jobs") or []
+        for j in page:
+            posted = datetime.fromtimestamp(j["pubDate"], tz=timezone.utc) if j.get("pubDate") else None
+            locs = j.get("locationRestrictions") or []
+            sal = ""
+            if j.get("minSalary") and j.get("maxSalary"):
+                per = {"hourly": "/hr", "annual": "/yr", "yearly": "/yr"}.get(j.get("salaryPeriod") or "", "")
+                sal = f"${j['minSalary']:,}–${j['maxSalary']:,}{per}"
+            out.append(Job(
+                company=j.get("companyName", ""), title=j.get("title", ""),
+                location="Remote - " + (", ".join(locs) if locs else "anywhere"),
+                url=j.get("applicationLink") or j.get("guid", ""), uid=f"hm:{j.get('guid')}", posted=posted,
+                text=strip_html(j.get("description") or j.get("excerpt") or ""), remote_hint=True, salary=sal,
+            ))
+        cursor = data.get("nextCursor")
+        oldest = min((datetime.fromtimestamp(j["pubDate"], tz=timezone.utc) for j in page if j.get("pubDate")),
+                     default=None)
+        if not cursor or not page or (oldest and oldest < cutoff):
+            break
+        time.sleep(1)
+    return out
+
+
+def fetch_adzuna(c) -> list[Job]:
+    """Adzuna search API (aggregates many job boards). Needs free keys from developer.adzuna.com
+    in env ADZUNA_APP_ID / ADZUNA_APP_KEY. Two searches: near home, and remote."""
+    app_id, app_key = os.environ.get("ADZUNA_APP_ID"), os.environ.get("ADZUNA_APP_KEY")
+    if not (app_id and app_key):
+        print("  (Adzuna skipped: add ADZUNA_APP_ID and ADZUNA_APP_KEY secrets to enable)", file=sys.stderr)
+        return []
+    words = c.get("what_or", "sre reliability devops \"production support\" \"application support\" "
+                             "\"support engineer\" \"production engineer\" \"technical operations\" "
+                             "\"trading support\" \"incident\" \"cloud operations\" \"platform engineer\"")
+    base = {"app_id": app_id, "app_key": app_key, "results_per_page": 50, "what_or": words,
+            "max_days_old": c.get("max_days_old", 2), "sort_by": "date", "content-type": "application/json"}
+    searches = [("local", {"where": c.get("where", "Aliso Viejo, California"), "distance": c.get("distance_km", 80)}),
+                ("remote", {"what": "remote"})]
+    out = []
+    for kind, extra in searches:
+        for page in range(1, c.get("pages", 2) + 1):
+            data = get(f"https://api.adzuna.com/v1/api/jobs/us/search/{page}", params={**base, **extra})
+            res = data.get("results") or []
+            for j in res:
+                desc = strip_html(j.get("description", ""))
+                remote = kind == "remote" and re.search(r"\bremote\b", (j.get("title", "") + " " + desc), re.I)
+                sal = ""
+                if j.get("salary_min") and str(j.get("salary_is_predicted", "1")) == "0":
+                    sal = f"${int(j['salary_min']):,}" + (f"–${int(j['salary_max']):,}" if j.get("salary_max") else "")
+                loc = (j.get("location") or {}).get("display_name", "")
+                out.append(Job(
+                    company=(j.get("company") or {}).get("display_name", ""), title=strip_html(j.get("title", "")),
+                    location=loc + (" (Remote, US)" if remote else ""), url=j.get("redirect_url", ""),
+                    uid=f"az:{j.get('id')}", posted=parse_dt(j.get("created")), text=desc,
+                    remote_hint=bool(remote), salary=sal,
+                ))
+            if len(res) < 50:
+                break
+            time.sleep(1)
+    return out
+
+
 def workday_detail(job: Job, c) -> None:
     """Fetch description for a Workday job that survived title/location filters."""
     try:
@@ -309,7 +381,8 @@ def workday_detail(job: Job, c) -> None:
 
 
 FETCHERS = {"greenhouse": fetch_greenhouse, "lever": fetch_lever, "ashby": fetch_ashby,
-            "workday": fetch_workday, "oracle": fetch_oracle, "talentbrew": fetch_talentbrew}
+            "workday": fetch_workday, "oracle": fetch_oracle, "talentbrew": fetch_talentbrew,
+            "himalayas": fetch_himalayas, "adzuna": fetch_adzuna}
 
 
 # ---------------------------------------------------------------- filters
@@ -416,10 +489,10 @@ def send_email(jobs: list[Job]) -> None:
     from email.message import EmailMessage
     user, pw = os.environ["SMTP_USER"], os.environ["SMTP_PASS"]
     to = os.environ.get("EMAIL_TO") or user
-    go = sum(j.verdict == "GO" for j in jobs)
     msg = EmailMessage()
-    msg["Subject"] = (f"jobwatch: {len(jobs)} new match{'es' if len(jobs) != 1 else ''}"
-                      + (f" ({go} GO)" if go else "") + f" — {jobs[0].title} @ {jobs[0].company}")
+    cos = sorted({j.company for j in jobs})
+    msg["Subject"] = (f"★ New at {', '.join(cos[:3])}{' +' + str(len(cos) - 3) if len(cos) > 3 else ''}: "
+                      f"{jobs[0].title}" + (f" (+{len(jobs) - 1} more)" if len(jobs) > 1 else ""))
     msg["From"], msg["To"] = user, to
     msg.set_content("\n\n".join(
         f"{j.title}\n" + "\n".join(job_lines(j)) + f"\n{j.url}" for j in jobs))
@@ -445,6 +518,54 @@ def notify_ntfy(job: Job) -> None:
     })
 
 
+DEFAULT_SKILLS = [  # [label, regex, weight] — overridable as `skills:` in config.yaml
+    ["KDB/q", r"\bkdb\+?|\bq/kdb", 3], ["Claude Code", r"claude code", 3], ["LLM / AI tools", r"\bllms?\b|\bgenai\b|ai[- ]assisted|ai tools", 2],
+    ["Incident response", r"incident", 2], ["On-call", r"on[- ]call", 2], ["Root cause analysis", r"root[- ]cause|\brca\b", 2],
+    ["Runbooks", r"runbook|playbook", 2], ["Trading systems", r"trading|\bforex\b|\bfx\b|brokerage|market data", 2],
+    ["Grafana", r"grafana", 2], ["Prometheus", r"prometheus", 2], ["CloudWatch", r"cloudwatch", 2],
+    ["Terraform", r"terraform", 2], ["Puppet", r"\bpuppet\b", 2], ["Linux", r"\blinux\b|\bunix\b", 2],
+    ["SQL", r"\bsql\b|postgres|mysql", 2], ["Python", r"\bpython\b", 1], ["Bash", r"\bbash\b|shell script", 1],
+    ["Jenkins", r"jenkins", 1], ["GitHub Actions", r"github actions", 1], ["Docker", r"docker|container", 1],
+    ["AWS", r"\baws\b|amazon web services", 1], ["Monitoring", r"monitoring|observability|alerting", 1],
+]
+DEFAULT_GAPS = [  # things you don't have yet — lower the fit score
+    ["Kubernetes", r"kubernetes|\bk8s\b|\bhelm\b|\beks\b|\bgke\b", 8], ["Go", r"\bgolang\b|\bGo\b(?=[,/ )])", 5],
+    ["Java", r"\bjava\b(?!script)", 4], ["C++", r"c\+\+", 4], ["Security clearance", r"clearance|ts/sci", 10],
+    ["CS degree", r"(bachelor|b\.?s\.?|degree)[^.]{0,60}computer science", 4],
+]
+EXCERPT_RE = re.compile(r"(requirements|qualifications|what you(?:'|’)ll (?:need|bring)|what we(?:'|’)re looking for|"
+                        r"you (?:have|bring|might be)|about you|who you are|minimum qualifications)", re.I)
+
+
+def analyze(job: Job) -> dict:
+    """Fit score + matched skills + gaps + requirements excerpt, for the matches page."""
+    txt = job.text or ""
+    low = txt.lower()
+    skills = [s[0] for s in CFG.get("skills", DEFAULT_SKILLS) if re.search(s[1], low)]
+    gaps = [g[0] for g in CFG.get("gaps", DEFAULT_GAPS)
+            if re.search(g[1], txt if g[0] == "Go" else low, 0 if g[0] == "Go" else re.I)]
+    weights = {s[0]: s[2] for s in CFG.get("skills", DEFAULT_SKILLS)}
+    penalties = {g[0]: g[2] for g in CFG.get("gaps", DEFAULT_GAPS)}
+    base = {"GO": 55, "GO (warm channel only)": 40}.get(job.verdict, 45)
+    fit = base + min(45, 3 * sum(weights[s] for s in skills)) - sum(penalties[g] for g in gaps)
+    m = EXCERPT_RE.search(txt)
+    start = m.start() if m else 0
+    excerpt = txt[start:start + 900].strip()
+    if len(txt) > start + 900:
+        excerpt = excerpt.rsplit(" ", 1)[0] + " …"
+    loc = (job.location + " " + low[:3000]).lower()
+    workplace = ("Remote" if job.remote_hint or "remote" in job.location.lower()
+                 else "Hybrid" if "hybrid" in loc else "On-site")
+    return {"fit": max(0, min(100, fit)), "skills": skills, "gaps": gaps,
+            "excerpt": excerpt, "workplace": workplace}
+
+
+def is_favorite(company: str) -> bool:
+    """Companies listed under `favorites:` in config.yaml (case-insensitive, partial match)."""
+    c = company.lower()
+    return any(f.lower() in c for f in CFG.get("favorites") or [])
+
+
 def save_matches(new: list[Job]) -> None:
     """Append new matches to docs/matches.json (newest first), dropping ones older than KEEP_DAYS."""
     now = datetime.now(timezone.utc)
@@ -455,12 +576,39 @@ def save_matches(new: list[Job]) -> None:
         "url": j.url, "verdict": j.verdict, "years": j.years, "salary": j.salary,
         "flags": j.flags, "remote": bool(j.remote_hint or "remote" in j.location.lower()),
         "posted": j.posted.isoformat() if j.posted else None, "found": now.isoformat(),
+        "favorite": is_favorite(j.company), "source": j.uid.split(":", 1)[0],
+        **analyze(j),
     } for j in new if j.uid not in known]
     cutoff = (now - timedelta(days=KEEP_DAYS)).isoformat()
     jobs = added + [j for j in data["jobs"] if j["found"] >= cutoff]
-    if added or len(jobs) != len(data["jobs"]) or not MATCHES.exists():
+    if added or len(jobs) != len(data["jobs"]) or not MATCHES.exists() or not (ROOT / "MATCHES.md").exists():
         MATCHES.parent.mkdir(exist_ok=True)
         MATCHES.write_text(json.dumps({"updated": now.isoformat(), "jobs": jobs}, indent=1))
+        write_markdown(jobs, now)
+
+
+def write_markdown(jobs: list[dict], now: datetime) -> None:
+    """MATCHES.md: readable on GitHub (web or app) inside a private repo. Grouped by day found (Pacific)."""
+    pt = timezone(timedelta(hours=-8))  # PST; close enough for grouping by day
+    cell = lambda s: str(s or "").replace("|", "/").replace("\n", " ")
+    out = ["# Job matches", "",
+           f"{len(jobs)} matches from the last {KEEP_DAYS} days. Updated {now.astimezone(pt):%a %b %d, %I:%M %p} PT. "
+           "Newest first.", ""]
+    day = None
+    for j in jobs:
+        found = datetime.fromisoformat(j["found"]).astimezone(pt)
+        if found.date() != day:
+            day = found.date()
+            out += ["", f"## {found:%A, %B %d}", "",
+                    "| Role | Company | Location | Verdict | Yrs | Pay | Flags |",
+                    "|---|---|---|---|---|---|---|"]
+        verdict = j["verdict"].replace("GO (warm channel only)", "GO (warm)").replace(" (years not stated)", "")
+        out.append(f"| [{cell(j['title'])}]({j['url']}) | {cell(j['company'])} | {cell(j['location'])} | "
+                   f"{'**GO**' if verdict == 'GO' else verdict} | {j['years'] if j['years'] is not None else '?'} | "
+                   f"{cell(j['salary'])} | {cell(', '.join(j['flags']))} |")
+    if not jobs:
+        out.append("No matches yet. New ones appear here after each scan.")
+    (ROOT / "MATCHES.md").write_text("\n".join(out) + "\n")
 
 
 # ---------------------------------------------------------------- main
@@ -506,6 +654,9 @@ def main() -> int:
             elif c["ats"] == "oracle":
                 oracle_detail(j, c)
             if score_text(j):
+                # Broad feeds (e.g. Himalayas) can require a minimum fit score to keep noise down.
+                if c.get("min_fit") and analyze(j)["fit"] < c["min_fit"]:
+                    continue
                 matches.append(j)
 
     # On the very first run, record everything but only alert on jobs inside the lookback window.
@@ -518,15 +669,19 @@ def main() -> int:
         print("  ! " + e, file=sys.stderr)
     for j in matches:
         print(f"\n[{j.title}]\n" + "\n".join(job_lines(j)) + f"\n{j.url}")
-    if matches and not os.environ.get("DRY_RUN"):
+    # Alerts go out ONLY for companies on your `favorites:` list. Everything else just lands on the page.
+    alerts = [j for j in matches if is_favorite(j.company)]
+    if alerts:
+        print(f"favorites with new matches: {', '.join(sorted({j.company for j in alerts}))}")
+    if alerts and not os.environ.get("DRY_RUN"):
         if os.environ.get("SMTP_USER") and os.environ.get("SMTP_PASS"):
             try:
-                send_email(matches)
-                print("emailed digest")
+                send_email(alerts)
+                print("emailed favorites alert")
             except Exception as e:  # noqa: BLE001
                 print(f"  ! email failed: {e}", file=sys.stderr)
         if os.environ.get("NTFY_TOPIC"):
-            for j in matches[:15]:
+            for j in alerts[:15]:
                 notify_ntfy(j)
                 time.sleep(0.5)
 
