@@ -1,6 +1,41 @@
 {
- "updated": "2026-11-18T15:05:43.389515+00:00",
+ "updated": "2026-11-18T16:45:35.876270+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/vibrant-emotional-health/jobs/devops-engineer-i",
+   "title": "DevOps Engineer I",
+   "company": "Vibrant Emotional Health",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/vibrant-emotional-health/jobs/devops-engineer-i?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "$67,200\u2013$113,000/yr",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-18T14:22:01+00:00",
+   "found": "2026-11-18T16:45:35.876270+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 61,
+   "skills": [
+    "Incident response",
+    "CloudWatch",
+    "Terraform",
+    "Python",
+    "Bash",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes",
+    "CS degree"
+   ],
+   "excerpt": "Qualifications: Bachelor's degree in Computer Science, Engineering, or a related field (or equivalent experience). 5+ years of experience working as a DevOps Engineer with a strong focus on AWS. 3+ years of experience supporting highly available systems, participating in after-hours incident response or maintenance when needed, and operating within formal change-management practices. 3+ years of experience with AWS Control Tower, Organizations, Config, Security Hub, GuardDuty, WAF/Shield, Backup, and cost-management tooling preferred. AWS certifications such as AWS Certified DevOps Engineer, AWS Certified Solutions Architect, or AWS Certified Developer. Experience building and managing CI/CD pipelines using AWS CodePipeline, AWS CodeBuild, and AWS CodeDeploy. Experience in healthcare, nonprofit, government, contact-center, or another regulated or mission-critical environment preferred. \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "gh:twilio:8385593",
    "title": "Software Engineer - Platform Engineering",
