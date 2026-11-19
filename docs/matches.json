@@ -1,6 +1,39 @@
 {
- "updated": "2026-11-19T15:05:42.297750+00:00",
+ "updated": "2026-11-19T15:35:49.631219+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/akamai-technologies/jobs/technical-support-engineer",
+   "title": "Technical Support Engineer",
+   "company": "Akamai Technologies",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/akamai-technologies/jobs/technical-support-engineer?utm_source=api",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "$65,700\u2013$118,300/yr",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-19T13:41:23+00:00",
+   "found": "2026-11-19T15:35:49.631219+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 83,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Runbooks",
+    "Grafana",
+    "Linux",
+    "Docker",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes"
+   ],
+   "excerpt": "requirements apply. Originally posted on Himalayas",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/bright-vision-technologies/jobs/cloud-infrastructure-engineer-2595648017",
    "title": "Cloud Infrastructure Engineer",
