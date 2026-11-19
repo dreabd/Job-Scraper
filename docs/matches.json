@@ -1,6 +1,76 @@
 {
- "updated": "2026-11-19T06:29:01.499547+00:00",
+ "updated": "2026-11-19T13:20:05.441696+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/bright-vision-technologies/jobs/cloud-infrastructure-engineer-2595648017",
+   "title": "Cloud Infrastructure Engineer",
+   "company": "Bright Vision Technologies",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/bright-vision-technologies/jobs/cloud-infrastructure-engineer-2595648017?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 4,
+   "salary": "$115,000\u2013$165,000/yr",
+   "flags": [
+    "contract?"
+   ],
+   "remote": true,
+   "posted": "2026-11-19T12:39:39+00:00",
+   "found": "2026-11-19T13:20:05.441696+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 64,
+   "skills": [
+    "Incident response",
+    "Runbooks",
+    "SQL",
+    "Docker",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "Qualifications Experience Required: typically 4+ years in a related professional role; exact threshold must match the approved requisition. Practical experience with the role-specific technology stack: the primary programming language and framework, APIs, SQL, testing, Git, and CI/CD. Professional experience in cloud engineering, infrastructure, DevOps, or systems operations relevant to the role. Hands-on knowledge of the named cloud, operating-system, container, or automation technologies. Understanding of networking, identity, security, monitoring, and availability fundamentals. Experience with scripting, automation, source control, or infrastructure as code. Ability to troubleshoot infrastructure and production issues methodically. Strong documentation and cross-team collaboration skills. Preferred Qualifications Additional hands-on depth in the primary programming language and \u2026",
+   "workplace": "Remote"
+  },
+  {
+   "id": "hm:https://himalayas.app/companies/intelerad/jobs/site-reliability-specialist-ii-linux-aws-monitoring",
+   "title": "Site Reliability Specialist II (Linux/AWS/Monitoring)",
+   "company": "Intelerad",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/intelerad/jobs/site-reliability-specialist-ii-linux-aws-monitoring?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "$82,500\u2013$110,000/yr",
+   "flags": [
+    "K8s preferred"
+   ],
+   "remote": true,
+   "posted": "2026-11-19T11:34:27+00:00",
+   "found": "2026-11-19T13:20:05.441696+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 73,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "Runbooks",
+    "Grafana",
+    "Prometheus",
+    "Terraform",
+    "Linux",
+    "SQL",
+    "Python",
+    "Bash",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes",
+    "CS degree"
+   ],
+   "excerpt": "requirements to senior team members. Support cloud infrastructure operations by administering and maintaining cloud-based deployments (AWS, Azure, or GCP), implementing infrastructure changes using established patterns, and contributing to the migration of on-premises systems to cloud environments. Respond to incidents with increasing ownership by independently diagnosing system and database issues of moderate complexity, executing resolution steps, contributing to root cause analysis, and recommending preventive measures to reduce recurrence. Advance continuous improvement efforts by identifying opportunities to automate recurring manual tasks, improving monitoring coverage and alerting accuracy, updating runbooks and documentation, and contributing to team projects that enhance platform reliability. Qualifications & Experience 3+ years of experience in system administration, site \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/american-residential-services/jobs/azure-infrastructure-engineer",
    "title": "Azure Infrastructure Engineer",
