@@ -1,6 +1,46 @@
 {
- "updated": "2026-11-19T19:05:58.730828+00:00",
+ "updated": "2026-11-19T19:36:00.037201+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/pavago/jobs/devops-engineer-4807661961",
+   "title": "DevOps Engineer",
+   "company": "Pavago",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/pavago/jobs/devops-engineer-4807661961?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-19T18:27:27+00:00",
+   "found": "2026-11-19T19:36:00.037201+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 77,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "Runbooks",
+    "Grafana",
+    "Prometheus",
+    "Terraform",
+    "Python",
+    "Bash",
+    "Jenkins",
+    "GitHub Actions",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes"
+   ],
+   "excerpt": "requirements such as SOC 2, HIPAA, PCI-DSS, or GDPR where applicable \u2022 Conduct vulnerability scans, patch management, and security hardening activities \u2022 Ensure infrastructure remains secure, compliant, and audit-ready Collaboration & Process Improvement Partner closely with development teams to improve deployment workflows and automation \u2022 Support developers with infrastructure troubleshooting and environment management \u2022 Identify opportunities to improve reliability, scalability, and operational efficiency \u2022 Maintain clear documentation for infrastructure, deployment pipelines, and operational procedures What Makes You a Perfect Fit Strong problem solver who thrives at the intersection of development and operations \u2022 Calm, analytical, and methodical during incidents and high-pressure situations \u2022 Passionate about automation, infrastructure scalability, and reliability engineering \u2022 \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "ab:ramp:da40ed6e-1c32-4284-89f5-2ad0813b8d49",
    "title": "Software Engineer, Production Engineering, FinOps",
