@@ -1,6 +1,34 @@
 {
- "updated": "2026-11-19T17:05:57.506205+00:00",
+ "updated": "2026-11-19T17:35:54.835978+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/atmosera/jobs/cloud-support-administrator-remote-us-3340918206",
+   "title": "Cloud Support Administrator (Remote US)",
+   "company": "Atmosera",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/atmosera/jobs/cloud-support-administrator-remote-us-3340918206?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "$70,000\u2013$90,000/yr",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-19T17:04:16+00:00",
+   "found": "2026-11-19T17:35:54.835978+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 73,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "Runbooks",
+    "Linux",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "Qualifications and Experience: Bachelor's degree in a technical field or equivalent experience. 3+ years of experience in support administration, specifically with Azure Cloud Experience with automation using scripting languages (PowerShell, Bicep) and CI/CD practices. Network platforms and firewalls (VPNs, policy management, load balancing, policy-based routing). Backup & Recovery: Demonstrated ability to configure and administer Azure Site Recovery and troubleshoot complex issues ITIL best practices for incident and problem management. Excellent written and verbal communication skills with the ability to present technical information to clients. Problem-Solving & Learning : Strong analytical mind with a focus on root-cause analysis, knowledge development, and process creation. Ability to work independently and as part of a team Preferred experience with Hypervisors (Hyper-V, VMware). \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/akamai-technologies/jobs/technical-support-engineer",
    "title": "Technical Support Engineer",
