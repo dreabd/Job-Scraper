@@ -1,6 +1,40 @@
 {
- "updated": "2026-11-19T02:05:51.271519+00:00",
+ "updated": "2026-11-19T02:35:34.084613+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/american-residential-services/jobs/azure-infrastructure-engineer",
+   "title": "Azure Infrastructure Engineer",
+   "company": "American Residential Services",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/american-residential-services/jobs/azure-infrastructure-engineer?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-19T01:27:49+00:00",
+   "found": "2026-11-19T02:35:34.084613+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 73,
+   "skills": [
+    "LLM / AI tools",
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "Runbooks",
+    "Terraform",
+    "SQL",
+    "Docker",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes",
+    "CS degree"
+   ],
+   "excerpt": "Qualifications Required Qualifications Note: Candidates must demonstrate each item below with specific examples of work they performed as an individual contributor. Bachelor's degree in IT, Computer Science, Engineering, or related field; equivalent professional experience considered. 5+ years of enterprise infrastructure engineering, including 3+ years of hands-on production Azure. Hybrid networking: hands-on VNets, NSGs, routing, DNS, and ExpressRoute or site-to-site VPN; can explain tradeoffs and failure behavior. On-premises to Azure migrations: direct involvement in preparation, cutover, rollback planning, and post-migration support. Working knowledge of VMware vSphere, Windows Server, Active Directory, DNS, and Group Policy. Resiliency: Azure Backup and Site Recovery (or equivalent DR design) against RTO/RPO targets. Automation: working proficiency with Terraform (state, modules, \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "ab:exegy:926dc44a-1b79-4a2f-b7c3-ea36ffff0fa3",
    "title": "Production Support & Monitoring Engineer",
