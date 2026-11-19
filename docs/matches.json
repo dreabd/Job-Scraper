@@ -1,6 +1,36 @@
 {
- "updated": "2026-11-19T18:05:43.197181+00:00",
+ "updated": "2026-11-19T18:35:42.071068+00:00",
  "jobs": [
+  {
+   "id": "ab:ramp:da40ed6e-1c32-4284-89f5-2ad0813b8d49",
+   "title": "Software Engineer, Production Engineering, FinOps",
+   "company": "Ramp",
+   "location": "New York, NY (HQ)",
+   "url": "https://jobs.ashbyhq.com/ramp/da40ed6e-1c32-4284-89f5-2ad0813b8d49",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "$180K \u2013 $247K \u2022 Offers Equity",
+   "flags": [
+    "remote\u2014check US/CA eligibility"
+   ],
+   "remote": true,
+   "posted": "2026-11-19T18:02:36.287000+00:00",
+   "found": "2026-11-19T18:35:42.071068+00:00",
+   "favorite": false,
+   "source": "ab",
+   "fit": 72,
+   "skills": [
+    "LLM / AI tools",
+    "Incident response",
+    "Terraform",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "requirements.\n\n - Reliability Platform \u2014 the tools and operating model for understanding and improving customer-facing reliability and performance: SLA/SLO measurement and reporting, customer-health visibility, monitoring and paging, and incident response and follow-through. The team helps product teams remain accountable for the health of what they build.\n\n\n\n\n\n\nWHAT YOU'LL DO\n\nAs a FinOps Specialist within Production Engineering, you\u2019ll help Ramp make better decisions about infrastructure spend \u2013 from resource usage and cloud commitments to vendor contracts and new investments.\n\nYou\u2019ll work closely with Production Engineering leadership, Developer Infrastructure, Finance, Procurement, and engineering teams across Ramp. You\u2019ll bring financial depth, investigate opportunities independently, and partner with engineers to turn recommendations into measurable results.\n\nThis is a senior \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/atmosera/jobs/cloud-support-administrator-remote-us-3340918206",
    "title": "Cloud Support Administrator (Remote US)",
