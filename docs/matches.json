@@ -1,6 +1,34 @@
 {
- "updated": "2026-11-20T17:05:35.932166+00:00",
+ "updated": "2026-11-20T17:35:45.233208+00:00",
  "jobs": [
+  {
+   "id": "ab:benchling:35c8286a-47de-48f7-97cb-4f329c8bca7a",
+   "title": "Leader, EMEA Product Support ",
+   "company": "Benchling",
+   "location": "Zurich, Switzerland",
+   "url": "https://jobs.ashbyhq.com/benchling/35c8286a-47de-48f7-97cb-4f329c8bca7a",
+   "verdict": "GO",
+   "years": 1,
+   "salary": "",
+   "flags": [
+    "remote\u2014check US/CA eligibility"
+   ],
+   "remote": true,
+   "posted": "2026-11-20T17:07:34.324000+00:00",
+   "found": "2026-11-20T17:35:45.233208+00:00",
+   "favorite": false,
+   "source": "ab",
+   "fit": 79,
+   "skills": [
+    "LLM / AI tools",
+    "Incident response",
+    "Root cause analysis",
+    "Runbooks"
+   ],
+   "gaps": [],
+   "excerpt": "QUALIFICATIONS\n\n - Experienced leader who coaches with empathy and stays close to the work, with 1+ years of management experience and 5+ years of SaaS support or professional services, or demonstrated leadership, including assigning ticket work and managing queues and resources. Able to personally troubleshoot and resolve complex customer issues.\n\n - Working knowledge of support and incident tooling and best practices for technical support environments (e.g. Salesforce, Zendesk, JIRA, PagerDuty, or equivalent), plus genuine enthusiasm for AI in support, ideally with hands-on experience piloting or driving adoption.\n\n - Sound judgment under pressure: prioritizing by urgency, severity, and customer health context, and skilled in customer-facing crisis communication, including what to say, when, and to whom during a live incident, and how to translate root cause into clear RCAs/ISNs.\n\n - \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/pavago/jobs/devops-engineer-4807661961",
    "title": "DevOps Engineer",
