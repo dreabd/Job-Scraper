@@ -1,6 +1,32 @@
 {
- "updated": "2026-11-20T22:35:35.639085+00:00",
+ "updated": "2026-11-20T23:05:43.579991+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/servicetitan/jobs/technical-support-engineer",
+   "title": "Technical Support Engineer",
+   "company": "ServiceTitan",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/servicetitan/jobs/technical-support-engineer?utm_source=api",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "$65,800\u2013$105,700/yr",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-20T21:41:06+00:00",
+   "found": "2026-11-20T23:05:43.579991+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 79,
+   "skills": [
+    "LLM / AI tools",
+    "Root cause analysis",
+    "Runbooks",
+    "SQL"
+   ],
+   "gaps": [],
+   "excerpt": "What We\u2019re Looking For: As a Technical Support Engineer (TSE), you\u2019ll be Tier 2 support for Aspire and FieldRoutes. When a client problem is more than our Tier 1 team can solve, the case is transferred to you, and it\u2019s yours until it\u2019s resolved. You find the cause, fix the data or get the bug to our developers, and keep the client informed the whole way. We use AI tools for the first pass on cases. They pull a case together, look for known bugs and similar past cases, search our knowledge base, and help draft SQL. You check what they find before anything reaches a client, and you take on the problems they can\u2019t solve. We want someone who likes figuring out why software breaks and can explain it in plain language. This is a mid-level role with a path to Senior Technical Support Engineer, reporting to the Manager of Technical Support Engineering. What You\u2019ll Do: Own your cases Take \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/mercor/jobs/devops-engineer-ai-model-evaluator-ai-trainer",
    "title": "DevOps Engineer - AI Model Evaluator - AI Trainer",
