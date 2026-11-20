@@ -1,6 +1,27 @@
 {
- "updated": "2026-11-20T23:05:43.579991+00:00",
+ "updated": "2026-11-20T23:35:38.953830+00:00",
  "jobs": [
+  {
+   "id": "ab:meridianlink:9335a528-4525-42d5-a18d-c22d8f00bf9c",
+   "title": "Integration Support Engineering Specialist ",
+   "company": "MeridianLink",
+   "location": "US Remote",
+   "url": "https://jobs.ashbyhq.com/meridianlink/9335a528-4525-42d5-a18d-c22d8f00bf9c",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "$51,826 \u2013 $69,000",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-20T23:02:43.989000+00:00",
+   "found": "2026-11-20T23:35:38.953830+00:00",
+   "favorite": false,
+   "source": "ab",
+   "fit": 40,
+   "skills": [],
+   "gaps": [],
+   "excerpt": "requirements and system designs.\n\n\u2022Verify system changes affecting integrations.\n\n\u2022Design then drive or implement test automation to prevent issues.\n\n\u2022Find opportunities to document frequently occurring integration issues.\n\nQualifications, Knowledge, & Experience\n\n\u2022Bachelor\u2019s degree with a 3.0+ GPA from an accredited college/university in a technical or business related field with programming exposure, OR 3 years of experience in a technical support role\n\n\u2022Great organizational skills\n\n\u2022Preferred (one or more of the following)\n\n\u2022Familiarity with a programming language (object-oriented preferred)\n\n\u2022Familiarity with web API and/or XML\n\n\u2022Prior experience in customer service\n\n\u2022Prior experience in the mortgage industry\n\n\u2022Ability to troubleshoot data flow processes, translation maps",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/servicetitan/jobs/technical-support-engineer",
    "title": "Technical Support Engineer",
