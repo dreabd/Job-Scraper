@@ -1,6 +1,37 @@
 {
- "updated": "2026-11-20T21:07:21.139657+00:00",
+ "updated": "2026-11-20T21:35:46.488219+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/mercor/jobs/devops-engineer-ai-model-evaluator-ai-trainer",
+   "title": "DevOps Engineer - AI Model Evaluator - AI Trainer",
+   "company": "mercor",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/mercor/jobs/devops-engineer-ai-model-evaluator-ai-trainer?utm_source=api",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "",
+   "flags": [
+    "K8s required?",
+    "contract?"
+   ],
+   "remote": true,
+   "posted": "2026-11-20T19:30:22+00:00",
+   "found": "2026-11-20T21:35:46.488219+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 68,
+   "skills": [
+    "Claude Code",
+    "Terraform",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes"
+   ],
+   "excerpt": "Qualifications Must-Have 2+ years of professional DevOps , SRE , or Cloud Engineering experience. Experience with AWS , Azure , GCP , Kubernetes , Terraform , CI/CD pipelines , or observability tooling. Regular use of AI coding agents like Cursor , Claude Code , Codex , Windsurf , Gemini CLI , or similar tools. Ability to evaluate model-generated infrastructure and reliability engineering solutions. Preferred Experience supporting production-scale systems . Compensation & Legal $400 per accepted task . Compensation is tied to accepted work. Application Process (Takes 20\u201330 mins to complete) Upload resume AI interview based on your resume Submit form Resources & Support For details about the interview process and platform information, please check: For any help or support, reach out to: PS: Our team reviews applications daily. Please complete your AI interview and application steps to \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "ab:benchling:35c8286a-47de-48f7-97cb-4f329c8bca7a",
    "title": "Leader, EMEA Product Support ",
