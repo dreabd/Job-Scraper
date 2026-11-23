@@ -1,6 +1,35 @@
 {
- "updated": "2026-11-23T18:05:45.363886+00:00",
+ "updated": "2026-11-23T18:35:38.594431+00:00",
  "jobs": [
+  {
+   "id": "gh:gitlab:8950027002",
+   "title": "Intermediate Security Engineer, Security Incident Response Team (SIRT)",
+   "company": "GitLab",
+   "location": "Remote, United States",
+   "url": "https://job-boards.greenhouse.io/gitlab/jobs/8950027002",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "$115,200",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-23T13:15:55-05:00",
+   "found": "2026-11-23T18:35:38.594431+00:00",
+   "favorite": false,
+   "source": "gh",
+   "fit": 81,
+   "skills": [
+    "LLM / AI tools",
+    "Incident response",
+    "Root cause analysis",
+    "Runbooks",
+    "Trading systems",
+    "Python",
+    "AWS"
+   ],
+   "gaps": [],
+   "excerpt": "What you\u2019ll bring&nbsp; Demonstrated ability to learn and lead incident response processes independently Experience with SIEM/security logging tools Experience with cloud platforms (GCP and/or AWS) Experience building tools or automation with AI, and the judgment to test and verify what it produces (Python, SOAR, or other scripting is a plus) A passion for technical documentation Proactive approach to identifying and investigating security threats Interest in conducting forensic analysis of infected hosts Experience or strong desire to learn cloud-based security investigations Due to government requirements, you must be a United States Citizen (defined as any individual who is a citizen of the United States by law, birth, or naturalization) to fill this position. &nbsp; About the team Security Operations is a globally distributed team of engineers split across 3 core regions; AMER, \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "ab:meridianlink:9335a528-4525-42d5-a18d-c22d8f00bf9c",
    "title": "Integration Support Engineering Specialist ",
