@@ -1,6 +1,35 @@
 {
- "updated": "2026-11-24T17:05:58.673535+00:00",
+ "updated": "2026-11-24T17:35:38.610960+00:00",
  "jobs": [
+  {
+   "id": "gh:andurilindustries:5298680007",
+   "title": "Technical Operations Engineer - Barracuda",
+   "company": "Anduril",
+   "location": "Costa Mesa, California, United States",
+   "url": "https://boards.greenhouse.io/andurilindustries/jobs/5298680007?gh_jid=5298680007",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "$113,000",
+   "flags": [
+    "clearance"
+   ],
+   "remote": false,
+   "posted": "2026-11-24T12:26:09-05:00",
+   "found": "2026-11-24T17:35:38.610960+00:00",
+   "favorite": false,
+   "source": "gh",
+   "fit": 63,
+   "skills": [
+    "Incident response",
+    "Root cause analysis",
+    "Linux"
+   ],
+   "gaps": [
+    "Security clearance"
+   ],
+   "excerpt": "requirements exactly as trained. System Maintenance: Perform preventative maintenance and basic troubleshooting on launcher subsystems \u2014 hydraulics, onboard power generation, cabling, and connectors. Documentation Compliance: Use internal systems (e.g., JIRA, Marcus, Odoo) to complete tasks, close tickets, and maintain accurate records. Problem Solving &amp; Troubleshooting Routine Issue Resolution: Tackle hardware, software, and networking issues using established methods; seek guidance for unfamiliar situations. Methodical Troubleshooting: Apply a structured approach to fault isolation between the round, the cabling, and the ground equipment, and escalate clearly when an issue exceeds your training. Root Cause Analysis: Support incident response and root cause analyses for systems in the field. Learning &amp; Knowledge Development Skill Building: Build expertise through repetition, \u2026",
+   "workplace": "On-site"
+  },
   {
    "id": "hm:https://himalayas.app/companies/4126-skechers-usa-france-s-a-s/jobs/analyst-ii-cloud-engineering",
    "title": "Analyst II, Cloud Engineering",
