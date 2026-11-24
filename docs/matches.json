@@ -1,6 +1,37 @@
 {
- "updated": "2026-11-24T08:56:12.847016+00:00",
+ "updated": "2026-11-24T14:05:52.305696+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/4126-skechers-usa-france-s-a-s/jobs/analyst-ii-cloud-engineering",
+   "title": "Analyst II, Cloud Engineering",
+   "company": "4126 Skechers USA France S.A.S.",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/4126-skechers-usa-france-s-a-s/jobs/analyst-ii-cloud-engineering?utm_source=api",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "$90,000\u2013$115,000/yr",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-24T12:22:23+00:00",
+   "found": "2026-11-24T14:05:52.305696+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 84,
+   "skills": [
+    "Incident response",
+    "Root cause analysis",
+    "CloudWatch",
+    "Terraform",
+    "Python",
+    "Bash",
+    "AWS"
+   ],
+   "gaps": [
+    "CS degree"
+   ],
+   "excerpt": "WHAT YOU'LL BRING: 2\u20134 years of hands-on cloud operations / cloud analyst experience. Working proficiency with AWS (IAM, EC2/VPC networking, CloudWatch, Directory Service/WorkSpaces, S3, RDS); familiarity with GCP and/or OCI. Comfortable in the CLI (AWS CLI, gcloud) and reading/writing shell scripts. Solid understanding of IAM concepts, least privilege, and access reviews. Experience with log analysis and troubleshooting across cloud services. Strong documentation habits and attention to detail. Familiarity with change-management processes and ticketing (e.g., ServiceNow/Jira). Organized and self-directed; manages a queue of varied requests. Clear written and verbal communicator. PREFERRED QUALIFICATIONS: Associate-level cloud certification (AWS Certified Solutions Architect / SysOps Administrator, or GCP Associate Cloud Engineer). Experience with Infrastructure as Code (Terraform) and \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/leidos/jobs/cryptography-security-infrastructure-engineer-mid-level",
    "title": "Cryptography & Security Infrastructure Engineer \u2013 Mid-Level",
