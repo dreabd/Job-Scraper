@@ -1,6 +1,41 @@
 {
- "updated": "2026-11-24T03:35:54.754338+00:00",
+ "updated": "2026-11-24T08:56:12.847016+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/leidos/jobs/cryptography-security-infrastructure-engineer-mid-level",
+   "title": "Cryptography & Security Infrastructure Engineer \u2013 Mid-Level",
+   "company": "Leidos",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/leidos/jobs/cryptography-security-infrastructure-engineer-mid-level?utm_source=api",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "$87,100\u2013$157,450/yr",
+   "flags": [
+    "clearance",
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-24T08:19:17+00:00",
+   "found": "2026-11-24T08:56:12.847016+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 70,
+   "skills": [
+    "Trading systems",
+    "Terraform",
+    "Puppet",
+    "Linux",
+    "Python",
+    "Docker",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes",
+    "Security clearance"
+   ],
+   "excerpt": "requirements and STIGs . Assist with network migrations, systems integration, testing, and validation. Develop technical documentation, certificate reports, and configuration records. Collaborate with engineering, cybersecurity, and operations teams. What We're Looking For Required Qualifications Active DoD Secret clearance and U.S. citizenship. Bachelor's degree in a related technical field with 4\u20138 years of relevant experience , or a master's degree with 2\u20136 years . Additional applicable experience may be considered in place of a degree. DoD IAT Level II certification (Security+ or equivalent) and an approved Computing Environment (CE) certification. Experience supporting enterprise infrastructure, network management, or systems engineering. Strong troubleshooting, analytical, communication, and problem-solving skills. Ability to work independently and collaborate with technical \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "gh:gitlab:8950027002",
    "title": "Intermediate Security Engineer, Security Incident Response Team (SIRT)",
