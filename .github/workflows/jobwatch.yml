@@ -56,7 +56,11 @@ jobs:
             sleep 5
           done
           echo "Could not push after 3 tries"; exit 1
-
+      - name: Package page
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
   publish:
     # Republish the page only when matches changed.
     needs: scan
@@ -66,11 +70,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v5
-        with:
-          ref: main       # pick up the commit the scan job just pushed
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
       - id: deploy
         uses: actions/deploy-pages@v4
