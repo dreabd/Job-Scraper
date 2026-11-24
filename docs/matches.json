@@ -1,6 +1,37 @@
 {
- "updated": "2026-11-24T22:05:41.090440+00:00",
+ "updated": "2026-11-24T22:35:36.537168+00:00",
  "jobs": [
+  {
+   "id": "gh:chainguard:4728655006",
+   "title": "Technical Support Engineer, AMER - East",
+   "company": "Chainguard",
+   "location": "United States - Remote",
+   "url": "https://job-boards.greenhouse.io/chainguard/jobs/4728655006",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "$100,000",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-24T17:31:09-05:00",
+   "found": "2026-11-24T22:35:36.537168+00:00",
+   "favorite": false,
+   "source": "gh",
+   "fit": 56,
+   "skills": [
+    "On-call",
+    "Terraform",
+    "Linux",
+    "Docker",
+    "AWS"
+   ],
+   "gaps": [
+    "Kubernetes"
+   ],
+   "excerpt": "What we're looking for: You\u2019ve spent 3+ years supporting enterprise customers with a confident, calm approach. 3+ years under your belt with Linux, Docker and Kubernetes. You dream in containers. You're a cross-functional harmony maker supporting teams across Engineering, Customer Success, and more. You're comfortable in the DevOps warzone: CI/CD, Linux, GitHub, Helm Charts, Terraform, Open source and all the good stuff. Experience with AWS, Azure, or GCP; AWS EKS experience is a plus. Extra kudos if you\u2019ve flirted with security frameworks, software supply chain security, or vulnerability scanning. Extra kudos if you bring a KCNA or CKA certification and aspire to be a future Kubestronaut. Startup experience? Even better.&nbsp; You\u2019ve navigated fast lanes before. A curious soul who learns faster than a caffeinated squirrel. &nbsp; Base Salary Range $100,000 &mdash; $120,000 USD About \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "gh:relativity:8960854002",
    "title": "New Grad 2027 - Mission Reliability Engineer I",
