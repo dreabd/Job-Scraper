@@ -1,6 +1,29 @@
 {
- "updated": "2026-11-24T19:05:43.844958+00:00",
+ "updated": "2026-11-24T19:35:49.302400+00:00",
  "jobs": [
+  {
+   "id": "gh:relativity:8957606002",
+   "title": "Mission Reliability Engineer II",
+   "company": "Relativity Space",
+   "location": "Long Beach, California, United States",
+   "url": "https://boards.greenhouse.io/relativity/jobs/8957606002?gh_jid=8957606002",
+   "verdict": "GO",
+   "years": 2,
+   "salary": "$109,000",
+   "flags": [],
+   "remote": false,
+   "posted": "2026-11-24T14:31:02-05:00",
+   "found": "2026-11-24T19:35:49.302400+00:00",
+   "favorite": false,
+   "source": "gh",
+   "fit": 61,
+   "skills": [
+    "Root cause analysis"
+   ],
+   "gaps": [],
+   "excerpt": "About You: An engineering or equivalent technical degree Hands-on experience developing, testing or operating complex high-consequence hardware, ideally in launch, spacecraft or aviation 2+ years of professional experience Nice to haves, but not required: Broad systems understanding across engineering disciplines A strong grounding in reliability, verification and root-cause methods, and the judgment to choose the right level of rigor for the problem Ability to influence without authority At Relativity Space, we are committed to transparency and fairness in our compensation practices. Actual compensation will be determined based on experience, qualifications, and other job-related factors. Compensation is only one part of our total rewards package. Relativity Space offers competitive salary and equity, a generous PTO and sick leave policy, parental leave, an annual learning and \u2026",
+   "workplace": "On-site"
+  },
   {
    "id": "gh:andurilindustries:5298680007",
    "title": "Technical Operations Engineer - Barracuda",
