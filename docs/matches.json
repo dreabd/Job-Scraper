@@ -1,6 +1,39 @@
 {
- "updated": "2026-11-25T22:05:52.473166+00:00",
+ "updated": "2026-11-25T22:26:54.781258+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/trimble/jobs/data-platform-engineer-data-infrastructure-services",
+   "title": "Data Platform Engineer, Data Infrastructure & Services",
+   "company": "Trimble",
+   "location": "Remote - Estonia, Spain",
+   "url": "https://himalayas.app/companies/trimble/jobs/data-platform-engineer-data-infrastructure-services?utm_source=api",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "",
+   "flags": [
+    "remote\u2014check US/CA eligibility"
+   ],
+   "remote": true,
+   "posted": "2026-11-25T21:27:19+00:00",
+   "found": "2026-11-25T22:26:54.781258+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 87,
+   "skills": [
+    "LLM / AI tools",
+    "Incident response",
+    "Runbooks",
+    "Terraform",
+    "SQL",
+    "Python",
+    "GitHub Actions",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "requirements into automated technical guardrails (IAM, network controls, secrets management, data classification, and encryption). Maintain Auditability & Telemetry: Treat observability, technical documentation, decision records (ADRs), deployment evidence, and runbooks as core elements of the product\u2014ensuring all services are observable and safe to operate. Leverage AI by Reflex: Integrate AI coding assistants and LLM workflows into daily platform operations to accelerate automation, troubleshooting, documentation, and code reviews across multiple technical domains. Cost & Capacity Stewardship: Manage cloud spend responsibly through labeling standards, capacity monitoring, cost-control policies, and lifecycle practices. Production-Ready Delivery Standards (\"Definition of Done\"): IaC & CI/CD Managed: Infrastructure fully defined in version-controlled IaC with peer review and automated \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "wd:crowdstrike:/job/USA---Remote-CA/DevOps-Engineer--Remote-_R30874",
    "title": "DevOps Engineer (Remote)",
