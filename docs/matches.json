@@ -1,6 +1,34 @@
 {
- "updated": "2026-11-25T18:05:49.587971+00:00",
+ "updated": "2026-11-25T18:35:33.893205+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/that-s-no-moon-entertainment/jobs/infrastructure-engineer",
+   "title": "Infrastructure Engineer",
+   "company": "That's No Moon Entertainment",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/that-s-no-moon-entertainment/jobs/infrastructure-engineer?utm_source=api",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "$100,000\u2013$135,000/yr",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-25T11:27:26+00:00",
+   "found": "2026-11-25T18:35:33.893205+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 75,
+   "skills": [
+    "Grafana",
+    "Prometheus",
+    "Terraform",
+    "Puppet",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "Requirements & Skills: Extensive knowledge with DevOps/SecOps/IaC methodologies involving a distributed environment, remote employees, and/or outsourcing. Hands-on experience with observability tooling (metrics, logging, alerting) and building actionable dashboards. Worked on at least one AAA game or equivalent complexity. Solid knowledge of scripting or programming languages. (Bonus) Familiarity with build systems and build farms. (Bonus) Experience with agentic software development workflows/pipelines in the scope of IT/Infrastructure management. (Bonus) Unreal Engine experience. Qualities: Excellent communication skills visually, verbally and written Work independently with minimal supervision Ability to resolve and de-escalate conflicts Great troubleshooting skills TNM considers a number of factors when determining each role's base pay range, including industry benchmarks, \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/bright-vision-technologies/jobs/aws-cloud-engineer-2572206497",
    "title": "AWS Cloud Engineer",
