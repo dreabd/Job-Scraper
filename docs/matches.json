@@ -1,6 +1,70 @@
 {
- "updated": "2026-11-25T07:33:42.320265+00:00",
+ "updated": "2026-11-25T14:05:53.900144+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/bright-vision-technologies/jobs/aws-cloud-engineer-2572206497",
+   "title": "AWS Cloud Engineer",
+   "company": "Bright Vision Technologies",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/bright-vision-technologies/jobs/aws-cloud-engineer-2572206497?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 4,
+   "salary": "$115,000\u2013$165,000/yr",
+   "flags": [
+    "contract?"
+   ],
+   "remote": true,
+   "posted": "2026-11-25T12:45:19+00:00",
+   "found": "2026-11-25T14:05:53.900144+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 67,
+   "skills": [
+    "Incident response",
+    "Runbooks",
+    "CloudWatch",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "Qualifications Experience Required: typically 4+ years in a related professional role; exact threshold must match the approved requisition. Practical experience with the role-specific technology stack: AWS IAM, VPC, EC2, S3, managed services, CloudWatch, automation, and cloud security. Professional experience in cloud engineering, infrastructure, DevOps, or systems operations relevant to the role. Hands-on knowledge of the named cloud, operating-system, container, or automation technologies. Understanding of networking, identity, security, monitoring, and availability fundamentals. Experience with scripting, automation, source control, or infrastructure as code. Ability to troubleshoot infrastructure and production issues methodically. Strong documentation and cross-team collaboration skills. Preferred Qualifications Additional hands-on depth in AWS IAM, VPC, EC2, S3, managed services, \u2026",
+   "workplace": "Remote"
+  },
+  {
+   "id": "ab:snowflake:65d08da8-21bf-45af-8c04-9cdeb583eff1",
+   "title": "Incident Response Engineer",
+   "company": "Snowflake",
+   "location": "PL-Warsaw-Lixa C",
+   "url": "https://jobs.ashbyhq.com/snowflake/65d08da8-21bf-45af-8c04-9cdeb583eff1",
+   "verdict": "GO (warm channel only)",
+   "years": 3,
+   "salary": "",
+   "flags": [
+    "remote\u2014check US/CA eligibility",
+    "K8s preferred"
+   ],
+   "remote": true,
+   "posted": "2026-11-25T11:47:45.086000+00:00",
+   "found": "2026-11-25T14:05:53.900144+00:00",
+   "favorite": false,
+   "source": "ab",
+   "fit": 65,
+   "skills": [
+    "LLM / AI tools",
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "Python",
+    "Docker",
+    "AWS"
+   ],
+   "gaps": [
+    "Kubernetes"
+   ],
+   "excerpt": "At Snowflake, we are powering the era of the agentic enterprise. To usher in this new era, we seek AI-native thinkers across every function who are energized by the opportunity to reinvent how they work. You don\u2019t just use tools; you possess an innate curiosity, treating AI as a high-trust collaborator that is core to how you solve problems and accelerate your impact. We look for low-ego individuals who thrive in dynamic and fast-moving environments and move with an experimental mindset \u2014 who rapidly test emerging capabilities to discover simpler, more powerful ways to deliver results. At Snowflake, your role isn't just to execute a function, but to help redefine the future of how work gets done.\n\nWe are hiring a Security Incident Response Engineer to join our Incident Response team. You will help redefine how incidents are handled at scale, pairing autonomous AI agents with human \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "gh:chainguard:4728655006",
    "title": "Technical Support Engineer, AMER - East",
