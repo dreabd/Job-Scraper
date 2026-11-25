@@ -1,6 +1,53 @@
 {
- "updated": "2026-11-25T21:35:51.109312+00:00",
+ "updated": "2026-11-25T22:05:52.473166+00:00",
  "jobs": [
+  {
+   "id": "wd:crowdstrike:/job/USA---Remote-CA/DevOps-Engineer--Remote-_R30874",
+   "title": "DevOps Engineer (Remote)",
+   "company": "CrowdStrike",
+   "location": "USA - Remote, CA",
+   "url": "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/job/USA---Remote-CA/DevOps-Engineer--Remote-_R30874",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-25T22:05:51.792751+00:00",
+   "found": "2026-11-25T22:05:52.473166+00:00",
+   "favorite": false,
+   "source": "wd",
+   "fit": 45,
+   "skills": [],
+   "gaps": [],
+   "excerpt": "",
+   "workplace": "Remote"
+  },
+  {
+   "id": "wd:crowdstrike:/job/Saudi-Arabia---Remote/IT-Systems-Administrator--Remote--SAU-_R30968",
+   "title": "IT Systems Administrator (Remote, SAU)",
+   "company": "CrowdStrike",
+   "location": "Saudi Arabia - Remote",
+   "url": "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/job/Saudi-Arabia---Remote/IT-Systems-Administrator--Remote--SAU-_R30968",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "",
+   "flags": [
+    "remote\u2014check US/CA eligibility"
+   ],
+   "remote": true,
+   "posted": "2026-11-25T22:05:51.792745+00:00",
+   "found": "2026-11-25T22:05:52.473166+00:00",
+   "favorite": false,
+   "source": "wd",
+   "fit": 54,
+   "skills": [
+    "Linux",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "What You\u2019ll Need: Communication: patience, tenacity and follow-through in tracking, troubleshooting and bringing to resolution internal customer support calls Explaining computer concepts/procedures/policies to non-technical internal customers; collaborating and coordinating with members of other teams to track, isolate and resolve technical issues Strong task management skills: ability to prioritize, triage, resolve and escalate in an efficient and effective manner Beginning to Intermediate knowledge of OS concepts and Active Directory account creation and maintenance with some OU and Security Group management Proven experience utilizing AI technologies to enhance decision-making, streamline workflows and processes, improve efficiency and drive business outcomes. Tangible understanding of security best practices, worst practices, concepts and real-world application Must speak fluent \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/that-s-no-moon-entertainment/jobs/infrastructure-engineer",
    "title": "Infrastructure Engineer",
