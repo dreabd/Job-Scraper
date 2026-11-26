@@ -1,6 +1,73 @@
 {
- "updated": "2026-11-26T17:05:38.131786+00:00",
+ "updated": "2026-11-26T17:35:52.300226+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/velocix-solutions-usa-inc/jobs/devops-engineer",
+   "title": "DevOps Engineer",
+   "company": "Velocix Solutions USA Inc.",
+   "location": "Remote - India, Portugal, United Kingdom, United States",
+   "url": "https://himalayas.app/companies/velocix-solutions-usa-inc/jobs/devops-engineer?utm_source=api",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "",
+   "flags": [
+    "K8s required?"
+   ],
+   "remote": true,
+   "posted": "2026-11-26T16:52:33+00:00",
+   "found": "2026-11-26T17:35:52.300226+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 73,
+   "skills": [
+    "Incident response",
+    "Root cause analysis",
+    "Terraform",
+    "Puppet",
+    "Linux",
+    "Python",
+    "Bash",
+    "Jenkins",
+    "Docker",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "Kubernetes",
+    "Go",
+    "Java"
+   ],
+   "excerpt": "Requirements may vary depending on seniority. Cloud Platforms Experience with one or more cloud providers: AWS Microsoft Azure Google Cloud Platform (GCP) Experience with: Cloud-native architectures Cloud deployments High-availability solutions Platform operations Infrastructure Automation Experience with Infrastructure as Code and automation tools such as: Terraform Ansible Puppet Similar automation frameworks Experience with: Configuration management Environment provisioning Infrastructure lifecycle management Containerization & Orchestration Experience with: Kubernetes Docker Containerized applications Orchestration platforms CI/CD & DevOps Tooling Experience with: Jenkins GitLab CI/CD Continuous Integration Continuous Delivery Release automation Strong understanding of: Source control management Build pipelines Deployment automation Software delivery processes Linux & Systems \u2026",
+   "workplace": "Remote"
+  },
+  {
+   "id": "hm:https://himalayas.app/companies/velocix-solutions-usa-inc/jobs/technical-support-engineer",
+   "title": "Technical Support Engineer",
+   "company": "Velocix Solutions USA Inc.",
+   "location": "Remote - India, Portugal, United States",
+   "url": "https://himalayas.app/companies/velocix-solutions-usa-inc/jobs/technical-support-engineer?utm_source=api",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-26T16:52:32+00:00",
+   "found": "2026-11-26T17:35:52.300226+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 72,
+   "skills": [
+    "Incident response",
+    "Root cause analysis",
+    "Linux",
+    "Python",
+    "Bash",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "requirements may vary depending on seniority level. Systems administration Linux system administration experience. Strong command-line skills. Basic scripting knowledge such as Shell, Bash, Perl, Python, or similar. Networking Understanding of enterprise IP networking concepts, including: TCP/IP UDP HTTP/HTTPS DNS Routing NAT VPNs Experience with networking infrastructure such as: Routers Switches Firewalls Load Balancers Virtualization & Infrastructure Experience with virtualization technologies such as: VMware ESXi vSphere OpenStack KVM Understanding of server, storage, and hardware operations. Video Delivery Technologies Experience with one or more of the following is highly desirable: Content Delivery Networks (CDN) Adaptive Bitrate (ABR) Streaming Video Origins Live and On-Demand Video Delivery IPTV, OTT, or Streaming Platforms Knowledge of streaming protocols such as: HLS DASH \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/trimble/jobs/data-platform-engineer-data-infrastructure-services",
    "title": "Data Platform Engineer, Data Infrastructure & Services",
