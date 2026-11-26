@@ -1,6 +1,39 @@
 {
- "updated": "2026-11-26T19:05:30.193864+00:00",
+ "updated": "2026-11-26T19:35:40.870823+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/jonas-software/jobs/jr-devops-engineer",
+   "title": "Jr. DevOps Engineer",
+   "company": "Jonas Software",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/jonas-software/jobs/jr-devops-engineer?utm_source=api",
+   "verdict": "MAYBE (years not stated)",
+   "years": null,
+   "salary": "",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-26T17:53:39+00:00",
+   "found": "2026-11-26T19:35:40.870823+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 86,
+   "skills": [
+    "Claude Code",
+    "LLM / AI tools",
+    "Incident response",
+    "Runbooks",
+    "CloudWatch",
+    "Bash",
+    "GitHub Actions",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [
+    "CS degree"
+   ],
+   "excerpt": "QUALIFICATIONS: A degree in Computer Science, Information Technology, Engineering, or a related field, or equivalent practical experience. Internships, coursework, and personal projects are welcome evidence of your skills. Foundational knowledge of Git, including repositories, commits, branches, merges, and pull requests. Familiarity with GitHub is preferred. Basic understanding of CI/CD, automated testing, build artifacts, and deployment workflows. Be prepared to discuss a pipeline or automation project you have built or contributed to. Hands-on experience with AI coding tools such as Claude Code in VS Code, or comparable tools, and a willingness to adopt our workflow. Ability to review, test, and troubleshoot AI-generated code. Some experience writing PowerShell or similar scripts, plus the ability to read and edit YAML configuration. You should be comfortable using a terminal and \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/velocix-solutions-usa-inc/jobs/devops-engineer",
    "title": "DevOps Engineer",
