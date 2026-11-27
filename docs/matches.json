@@ -1,6 +1,37 @@
 {
- "updated": "2026-11-27T23:05:38.422539+00:00",
+ "updated": "2026-11-27T23:35:45.364702+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/bright-vision-technologies/jobs/site-reliability-engineer-6573155567",
+   "title": "Site Reliability Engineer",
+   "company": "Bright Vision Technologies",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/bright-vision-technologies/jobs/site-reliability-engineer-6573155567?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 4,
+   "salary": "$115,000\u2013$165,000/yr",
+   "flags": [
+    "contract?"
+   ],
+   "remote": true,
+   "posted": "2026-11-27T22:59:56+00:00",
+   "found": "2026-11-27T23:35:45.364702+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 70,
+   "skills": [
+    "Incident response",
+    "Runbooks",
+    "Linux",
+    "Python",
+    "Bash",
+    "Docker",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "Qualifications Experience Required: typically 4+ years in a related professional role; exact threshold must match the approved requisition. Practical experience with the role-specific technology stack: Linux, Python/Bash, distributed systems, SLI/SLO, incident response, monitoring, and reliability automation. Professional experience in cloud engineering, infrastructure, DevOps, or systems operations relevant to the role. Hands-on knowledge of the named cloud, operating-system, container, or automation technologies. Understanding of networking, identity, security, monitoring, and availability fundamentals. Experience with scripting, automation, source control, or infrastructure as code. Ability to troubleshoot infrastructure and production issues methodically. Strong documentation and cross-team collaboration skills. Preferred Qualifications Additional hands-on depth in Linux, \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/freedom24/jobs/banking-systems-administrator",
    "title": "Banking Systems Administrator",
