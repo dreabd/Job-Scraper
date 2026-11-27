@@ -1,6 +1,35 @@
 {
- "updated": "2026-11-27T21:05:50.804220+00:00",
+ "updated": "2026-11-27T21:35:45.205865+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/freedom24/jobs/banking-systems-administrator",
+   "title": "Banking Systems Administrator",
+   "company": "Freedom24",
+   "location": "Remote - Estonia, Kazakhstan",
+   "url": "https://himalayas.app/companies/freedom24/jobs/banking-systems-administrator?utm_source=api",
+   "verdict": "GO",
+   "years": 1,
+   "salary": "",
+   "flags": [
+    "remote\u2014check US/CA eligibility",
+    "contract?"
+   ],
+   "remote": true,
+   "posted": "2026-11-27T20:13:59+00:00",
+   "found": "2026-11-27T21:35:45.205865+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 76,
+   "skills": [
+    "Incident response",
+    "Trading systems",
+    "SQL",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "Requirements At least 1 year of experience in user technical support and/or a call center. Basic knowledge of SQL and some experience working with databases and task trackers. Russian language proficiency is mandatory. Strong written and verbal communication skills. Basic technical literacy and a willingness to deepen your knowledge in this area. Responsibility, punctuality, and stress resilience. Nice to Have: English proficiency at B2 level or above. Understanding the basic principles of financial markets and exchange operations. Experience working with databases and SQL queries. Benefits Fully remote work. Working schedule: 5/2, 15:00\u201324:00 Moscow time, with possible paid weekend shifts. Daytime and evening working hours according to the Moscow time zone. A service contract with a Cyprus-based company. Fixed monthly salary in euros. Paid annual leave of 21 working days. Paid sick \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/mckesson/jobs/tier-3-production-support-engineer",
    "title": "Tier 3 Production Support Engineer",
