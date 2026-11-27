@@ -1,6 +1,35 @@
 {
- "updated": "2026-11-27T07:17:58.146519+00:00",
+ "updated": "2026-11-27T14:05:32.905786+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/chenega-corporation/jobs/data-engineer-observability",
+   "title": "Data Engineer (Observability)",
+   "company": "Chenega Corporation",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/chenega-corporation/jobs/data-engineer-observability?utm_source=api",
+   "verdict": "GO",
+   "years": 1,
+   "salary": "$82,000\u2013$92,000/yr",
+   "flags": [
+    "contract?"
+   ],
+   "remote": true,
+   "posted": "2026-11-27T11:58:45+00:00",
+   "found": "2026-11-27T14:05:32.905786+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 76,
+   "skills": [
+    "LLM / AI tools",
+    "SQL",
+    "Python",
+    "AWS",
+    "Monitoring"
+   ],
+   "gaps": [],
+   "excerpt": "requirements, document solution, communicate progress and issues, and explain technical findings in clear, outcome-oriented language. Our company offers employees the opportunity to join a team where there is a robust employee benefits program, management engagement, quality leadership, an atmosphere of teamwork, recognition for performance, and promotion opportunities. We actively strive to channel our highly engaged employee\u2019s knowledge, critical thinking, innovative solutions for our clients. Responsibilities Develop, maintain, and support scalable data pipelines and platform components using Databricks and Palantir Foundry, following established architecture and engineering standards. Contribute to the design, development, and continuous improvement of observability metadata models, standards, and frameworks to support monitoring, data quality, operational visibility, and platform \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/jonas-software/jobs/jr-devops-engineer",
    "title": "Jr. DevOps Engineer",
