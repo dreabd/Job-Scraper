@@ -1,6 +1,32 @@
 {
- "updated": "2026-11-27T17:05:35.794117+00:00",
+ "updated": "2026-11-27T17:35:30.164173+00:00",
  "jobs": [
+  {
+   "id": "hm:https://himalayas.app/companies/mckesson/jobs/tier-3-production-support-engineer",
+   "title": "Tier 3 Production Support Engineer",
+   "company": "McKesson",
+   "location": "Remote - United States",
+   "url": "https://himalayas.app/companies/mckesson/jobs/tier-3-production-support-engineer?utm_source=api",
+   "verdict": "GO (warm channel only)",
+   "years": 4,
+   "salary": "$125,000\u2013$208,400/yr",
+   "flags": [],
+   "remote": true,
+   "posted": "2026-11-27T16:58:39+00:00",
+   "found": "2026-11-27T17:35:30.164173+00:00",
+   "favorite": false,
+   "source": "hm",
+   "fit": 64,
+   "skills": [
+    "Incident response",
+    "On-call",
+    "Root cause analysis",
+    "SQL"
+   ],
+   "gaps": [],
+   "excerpt": "requirements to internal and external customers are met in a timely and cost-effective manner; solicit feedback from customers to identify opportunities to improve products and/or services; resolve minor conflicts and involve team members in problem resolution. Maintain an in-depth understanding of Ontada technology solutions and life sciences products with ability to quickly analyze information coming from other teams and work to urgently triage and identify potential root causes Maintain a thorough understanding of regulatory requirements and healthcare initiatives in the Community Oncology setting and how Ontada supports these customer needs Maintain knowledge of healthcare technology interoperability and Ontada standard integrations; providing analysis of HL7, XML and other interface messaging formats to troubleshoot and resolve interface incidents Assist in the development of \u2026",
+   "workplace": "Remote"
+  },
   {
    "id": "hm:https://himalayas.app/companies/chenega-corporation/jobs/data-engineer-observability",
    "title": "Data Engineer (Observability)",
